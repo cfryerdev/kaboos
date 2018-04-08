@@ -1,5 +1,5 @@
 # What is Kaboos
-Release train management. This was my very first MEANStack application, be gentle. I attempted to still use it as a relational database. Oh me.
+Release train management. This was my very first MEANStack application, be gentle. This will probably be the worst meanstack app you have seen. Heh. I even attempted to still use mongodb as a relational database. Oh me...
 
 # What do I need to use this?
 1) Node
