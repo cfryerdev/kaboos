@@ -1,0 +1,44 @@
+<div class="block-header pad-top">
+        <h2>Login <small>Login to begin using the application.</small></h2>
+</div>
+<div class="card lc-block toggled" ng-controller="AccountController as pageController">
+    <div class="card-body card-padding">
+        <form class="form-horizontal" name="pageForm" ng-submit="pageController.login()" novalidate>
+
+            <div ng-show="!pageController.isLoading" class="card-body card-padding">
+                <div class="form-group" data-ng-class="{'has-error': pageController.pageForm.name.$invalid && pageController.isSubmitted}">
+                    <label for="emailAddress" class="field-label">Email Address</label>
+                    <div class="field-input">
+                        <input type="text" class="form-control required" id="emailAddress" name="emailAddress" ng-model="pageController.loginModel.emailAddress" required placeholder="Email Address">
+                    </div>
+                </div>
+                <div class="form-group" data-ng-class="{'has-error': pageController.pageForm.password.$invalid && pageController.isSubmitted}">
+                    <label for="password" class="field-label">Password</label>
+                    <div class="field-input">
+                        <input type="password" class="form-control required" id="password" name="password" ng-model="pageController.loginModel.password" required placeholder="Password">
+                    </div>
+                </div>
+            </div>
+
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value=""><i class="input-helper"></i> Keep me signed in
+                </label>
+            </div>
+
+            <button type="submit" class="btn btn-login btn-danger btn-float waves-effect waves-circle"><i class="fa fa-arrow-right"></i></button>
+        </form>
+    </div>
+
+</div>
+
+<div class="lv-footer register">
+    Don't have an Account?
+    <a href="#/accounts/register" class="blue">Click Here</a>
+    <span>to Register</span>
+</div>
+<div class="lv-footer forgotpassword">
+    Forget your Password?
+    <a href="#/accounts/forgotpassword" class="green">Click Here</a>
+    <span>to Get New One</span>
+</div>

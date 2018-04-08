@@ -1,0 +1,148 @@
+<div class="block-header pad-top">
+        <h2>Register <small>Create an account to begin.</small></h2>
+</div>
+<div class="card lc-block toggled" ng-controller="AccountController as pageController">
+    <div class="card-body card-padding">
+        <form class="form-horizontal" name="pageForm" ng-submit="pageController.register()" novalidate>
+
+
+          <div ng-show="!pageController.isLoading" class="card-body card-padding">
+
+            <div class="form-group no-padding-bottom">
+              <p class="lead section">Tell us a little about you...</p>
+            </div>
+
+            <div class="form-group">
+                <label for="displayName" class="field-label">Display Name</label>
+                <div class="field-input">
+                    <input type="text" class="form-control required" id="displayName" name="displayName" ng-model="pageController.loginModel.displayName" required placeholder="Display Name">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="emailAddress" class="field-label">Email Address</label>
+                <div class="field-input">
+                    <input type="text" class="form-control required" id="emailAddress" name="emailAddress" ng-model="pageController.loginModel.emailAddress" required placeholder="Email Address">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="field-label">Password</label>
+                <div class="field-input">
+                    <input type="password" class="form-control required" id="password" name="password" ng-model="pageController.loginModel.password" required placeholder="Password">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword" class="field-label">Confirm Password</label>
+                <div class="field-input">
+                    <input type="password" class="form-control required" id="confirmPassword" name="confirmPassword" ng-model="pageController.loginModel.confirmPassword" required placeholder="Confirm Password">
+                </div>
+            </div>
+
+            <div class="form-group no-padding-bottom">
+              <p class="lead section">Tell us how you will be using the application...</p>
+            </div>
+
+            <div class="form-group">
+              <div class="radio m-b-15">
+                  <label>
+                      <input type="radio" name="createJoinCompany" value="create" ng-model="pageController.loginModel.createJoinCompany">
+                      <i class="input-helper"></i>
+                      Create a Company...
+                  </label>
+              </div>
+              <div class="radio m-b-15">
+                  <label>
+                      <input type="radio" name="createJoinCompany" value="join" ng-model="pageController.loginModel.createJoinCompany">
+                      <i class="input-helper"></i>
+                      Join a Company...
+                  </label>
+              </div>
+              <div class="radio m-b-15">
+                  <label>
+                      <input type="radio" name="createJoinCompany" value="none" ng-model="pageController.loginModel.createJoinCompany">
+                      <i class="input-helper"></i>
+                      Decide Later.
+                  </label>
+              </div>
+            </div>
+
+
+            <div class="form-group" ng-show="pageController.loginModel.createJoinCompany == 'create'">
+                <label for="companyName" class="field-label">Company Name</label>
+                <div class="field-input">
+                    <input type="text" class="form-control" id="companyName" name="companyName" ng-model="pageController.loginModel.companyName" placeholder="Company Name">
+                </div>
+            </div>
+            <div class="form-group" ng-show="pageController.loginModel.createJoinCompany == 'join'">
+                <label for="companyInviteCode" class="field-label">Company Invite Code</label>
+                <div class="field-input">
+                    <input type="text" class="form-control" id="companyInviteCode" name="companyInviteCode" ng-model="pageController.loginModel.companyInviteCode" placeholder="Company Invite Code">
+                </div>
+            </div>
+
+          </div>
+
+          <button type="submit" class="btn btn-login btn-danger btn-float waves-effect waves-circle"><i class="fa fa-arrow-right"></i></button>
+        </form>
+    </div>
+
+</div>
+
+<div class="lv-footer login">
+    Already have an Account?
+    <a href="#/accounts/login" class="blue">Click Here</a>
+    <span>to go back to login.</span>
+</div>
+
+
+﻿<!-- <div class="login-form-section" ng-controller="AccountController as pageController">
+
+    <div ng-controller="AlertCtrl as alertCtrl">
+        <alert ng-repeat="alert in alertCtrl.alerts" type="{{alert.type}}" close="alertCtrl.closeAlert($index)"><i class="fa fa-exclamation-circle fa-lg"></i> <span ng-bind-html="alert.msg"></span></alert>
+    </div>
+
+    <div class="login-content animated bounceIn" data-animation="bounceIn">
+
+        <form class="form-horizontal" name="pageController.pageForm" ng-submit="pageController.register()" novalidate>
+            <div class="section-title">
+                <h3>Create New Account</h3>
+            </div>
+
+            <div class="form-group">
+                <label for="kb_displayName" class="field-label">Full Name</label>
+                <div class="field-input">
+                    <input type="text" class="form-control required" id="kb_displayName" name="kb_displayName" ng-model="pageController.loginModel.displayName" placeholder="Full Name" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="emailAddress" class="field-label">Email Address</label>
+                <div class="field-input">
+                    <input type="text" class="form-control required" id="emailAddress" name="emailAddress" ng-model="pageController.loginModel.emailAddress" placeholder="Email Address" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="field-label">Password</label>
+                <div class="field-input">
+                    <input type="password" class="form-control required" id="password" name="password" ng-model="pageController.loginModel.password" placeholder="Password" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmpassword" class="field-label">Confirm Password</label>
+                <div class="field-input">
+                    <input type="password" class="form-control required" id="confirmpassword" name="confirmpassword" placeholder="Confirm Password" required>
+                </div>
+            </div>
+
+            <div class="login-form-action clearfix">
+                <button type="submit" class="btn btn-success pull-right green-btn">Create</button>
+            </div>
+
+        </form>
+    </div>
+    <a href="#/accounts/login" class="btn btn-primary" style="width: 100%;">Return to Login</a>
+</div> -->

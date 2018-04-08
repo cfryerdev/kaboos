@@ -1,0 +1,14 @@
+{
+  "name": "ePixelation.Kaboos.Web",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.4.7",
+    "angular-route": "1.4.7",
+    "angular-sanitize": "1.4.7",
+    "angular-animate": "1.4.7",
+    "angular-cookies": "1.4.7",
+    "angular-loading-bar": "0.8.0",
+    "angular-growl-v2": "0.6.0",
+    "angular-ui-calendar": "latest"
+  }
+}

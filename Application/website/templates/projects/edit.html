@@ -1,0 +1,207 @@
+﻿<div>
+    <ul class="breadcrumb">
+        <li><a href="#/dashboard">Dashboard</a></li>
+        <li><a href="#/companies">Companies</a></li>
+        <li><a href="#/companies/{{pageController.companyId}}">Company</a></li>
+        <li><a href="#/companies/{{pageController.companyId}}/projects">Projects</a></li>
+        <li class="active">Edit Project</li>
+    </ul>
+
+    <div class="card">
+        <form class="form-horizontal" name="pageForm" ng-submit="pageController.saveProjectData()" novalidate>
+            <div class="card-header bgm-orange">
+                <h2>
+                  <add-favorite type="project" class="pull-right"></add-favorite>
+                  <i class="fa fa-puzzle-piece"></i> Project <small>{{ pageController.isNew ? "This is a new project." : "This is an existing project."}}</small>
+                </h2>
+                <!-- <ul class="actions actions-alt" ng-show="!pageController.isNew">
+                    <li class="dropdown" uib-dropdown="">
+                        <a href="#" uib-dropdown-toggle="" aria-expanded="false" class="dropdown-toggle" aria-haspopup="true">
+                            <i class="fa fa-ellipsis-v"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+
+
+                            <li class="divider hidden-xs"></li>
+                            <li><a href="#">View Tree</a></li>
+                            <li><a href="#">View Dependencies Tree</a></li>
+                            <li class="divider hidden-xs"></li>
+                            <li><a ng-click="pageController.deleteProjectData()" style="color: #f6675d;">Delete</a></li>
+                        </ul>
+                    </li>
+                </ul> -->
+                <button class="btn bgm-red btn-float waves-effect" type="button" style="margin-right: 70px;" ng-click="pageController.deleteProjectData()" ng-if="!pageController.isNew"><i class="fa fa-trash"></i></button>
+                <button class="btn bgm-green btn-float waves-effect" type="submit" ><i class="fa fa-floppy-o"></i></button>
+            </div>
+            <div class="card-body">
+                <div ng-show="pageController.isLoading" class="loadingSection">
+                    <i class="fa fa-circle-o-notch fa-spin fa-lg"></i> Loading... please wait.
+                </div>
+                <uib-tabset active="active" ng-show="!pageController.isLoading" class="nav-justified" >
+                    <uib-tab heading="Information">
+
+                      <div ng-show="!pageController.isLoading" class="card-body card-padding">
+
+                        <div class="form-group" data-ng-class="{'has-error': pageController.pageForm.name.$invalid && pageController.isSubmitted}">
+                            <label for="companyName" class="field-label">Company</label>
+                            <div class="field-input">
+                                <input class="form-control" id="companyName" type="text" placeholder="Company" disabled="" ng-model="pageController.company.name">
+                            </div>
+                        </div>
+
+                        <div class="form-group" data-ng-class="{'has-error': pageController.pageForm.name.$invalid && pageController.isSubmitted}">
+                            <label for="name" class="field-label">Name</label>
+                            <div class="field-input">
+                                <input type="text" class="form-control required" id="name" name="name" ng-model="pageController.project.name" required placeholder="Name">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name" class="field-label">Project Type</label>
+                            <div class="field-input select">
+                              <select class="form-control required" id="projectType" ng-model="pageController.project.projectType">
+                                <option value="">-- Select --</option>
+                                <option ng-repeat="item in pageController.projectTypes"
+                                    value="{{item._id}}"
+                                    ng-selected="{{pageController.project.projectType == item._id}}">
+                                    {{item.name}}
+                                </option>
+                              </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="products" class="field-label">Description</label>
+                            <div class="field-input">
+                                <textarea class="form-control" rows="3" id="description" ng-model="pageController.project.description" placeholder="Description"></textarea>
+                            </div>
+                        </div>
+
+                      </div>
+
+                    </uib-tab>
+                    <uib-tab heading="Dependencies" ng-show="!pageController.isNew">
+
+
+                        <ul class="pv-follow section-title list">
+                            <li>
+                              <i class="fa fa-code-fork" aria-hidden="true"></i> Parent Projects <i>(Projects this project consumes)</i>
+                              <ul class="actions actions pull-right" ng-show="!pageController.isNew">
+                                  <li class="dropdown" uib-dropdown="">
+                                      <a href="#" uib-dropdown-toggle="" aria-expanded="false" class="dropdown-toggle  pull-right" aria-haspopup="true">
+                                          <i class="fa fa-ellipsis-v"></i>
+                                      </a>
+                                      <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="" ng-click="pageController.addProjectDep('Parent')">Add Parent Project</a></li>
+                                      </ul>
+                                  </li>
+                              </ul>
+                            </li>
+                        </ul>
+                        <div class="noRecordsSection" ng-show="pageController.parents.length == 0" style="padding: 20px 20px 0px 20px;">
+                            <i class="fa fa-exclamation-triangle"></i> No Records Found.
+                        </div>
+                        <div class="list-group tabbed-content-no-margin" ng-show="pageController.parents.length > 0">
+                            <a href="#/companies/{{pageController.company._id}}/projects/{{item.projectParent._id}}"
+                                class="list-group-item project"
+                                ng-repeat="item in pageController.parents">
+                                <h4 class="list-group-item-heading"><i class="fa fa-angle-right"></i> {{item.projectParent.name || "Unknown Project"}}</h4>
+                                <p class="list-group-item-text">{{ (item.name) || "No Name"}}</p>
+                                <p class="list-group-item-text">{{ (item.description) || "No Description"}}</p>
+                            </a>
+                        </div>
+
+                        <ul class="pv-follow section-title list" style="margin-top: 20px;">
+                            <li>
+                              <i class="fa fa-code-fork" aria-hidden="true"></i> Child Projects <i>(Projects that consume this project)</i>
+                              <ul class="actions actions pull-right" ng-show="!pageController.isNew">
+                                  <li class="dropdown" uib-dropdown="">
+                                      <a href="#" uib-dropdown-toggle="" aria-expanded="false" class="dropdown-toggle  pull-right" aria-haspopup="true">
+                                          <i class="fa fa-ellipsis-v"></i>
+                                      </a>
+                                      <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="" ng-click="pageController.addProjectDep('Child')">Add Child Project</a></li>
+                                      </ul>
+                                  </li>
+                              </ul>
+                            </li>
+                        </ul>
+                        <div class="noRecordsSection" ng-show="pageController.children.length == 0" style="padding: 20px 20px 0px 20px;">
+                            <i class="fa fa-exclamation-triangle"></i> No Records Found.
+                        </div>
+                        <div class="list-group tabbed-content-no-margin" ng-show="pageController.children.length > 0">
+                            <a href="#/companies/{{pageController.company._id}}/projects/{{item.projectChild._id}}"
+                                class="list-group-item project"
+                                ng-repeat="item in pageController.children">
+                                <h4 class="list-group-item-heading"><i class="fa fa-angle-right"></i> {{item.projectChild.name || "Unknown Project"}}</h4>
+                                <p class="list-group-item-text">{{ (item.name) || "No Name"}}</p>
+                                <p class="list-group-item-text">{{ (item.description) || "No Description"}}</p>
+                            </a>
+                        </div>
+
+                    </uib-tab>
+                    <uib-tab heading="Project Teams" ng-show="!pageController.isNew">
+                        <ul class="pv-follow section-title list">
+                            <li>
+                              <i class="fa fa-list-ul"></i> Current Project Teams
+                              <ul class="actions actions pull-right" ng-show="!pageController.isNew">
+                                  <li class="dropdown" uib-dropdown="">
+                                      <a href="#" uib-dropdown-toggle="" aria-expanded="false" class="dropdown-toggle  pull-right" aria-haspopup="true">
+                                          <i class="fa fa-ellipsis-v"></i>
+                                      </a>
+                                      <ul class="dropdown-menu dropdown-menu-right">
+                                          <li><a href="" ng-click="pageController.addTeamProject()">Add Team Project</a></li>
+                                      </ul>
+                                  </li>
+                              </ul>
+                            </li>
+                        </ul>
+                        <div class="noRecordsSection" ng-show="pageController.teams.length == 0">
+                            <i class="fa fa-exclamation-triangle"></i> No Records Found.
+                        </div>
+                        <div class="list-group tabbed-content-no-margin" ng-show="pageController.teams.length > 0">
+                            <a href="#/companies/{{pageController.company._id}}/teams/{{item.team._id}}"
+                                class="list-group-item team"
+                                ng-repeat="item in pageController.teams">
+                                <h4 class="list-group-item-heading"><i class="fa fa-angle-right"></i> {{item.team.name || "Unknown Team"}}</h4>
+                                <p class="list-group-item-text">{{ (item.team.description) || "No Description"}}</p>
+                            </a>
+                        </div>
+
+                    </uib-tab>
+                    <uib-tab heading="Releases" ng-show="!pageController.isNew">
+                      <ul class="pv-follow section-title list">
+                          <li>
+                            <i class="fa fa-calendar-plus-o" aria-hidden="true"></i> Pending Releases</i>
+                            <ul class="actions actions pull-right" ng-show="!pageController.isNew">
+                                <li class="dropdown" uib-dropdown="">
+                                    <a href="#" uib-dropdown-toggle="" aria-expanded="false" class="dropdown-toggle  pull-right" aria-haspopup="true">
+                                        <i class="fa fa-ellipsis-v"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                      <li><a href="" ng-click="pageController.addRelease()">Create new release</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                          </li>
+                      </ul>
+                      <div class="noRecordsSection" ng-show="pageController.parents.length == 0" style="padding: 20px 20px 0px 20px;">
+                          <i class="fa fa-exclamation-triangle"></i> No Records Found.
+                      </div>
+
+                      <ul class="pv-follow section-title list" style="margin-top: 20px;">
+                          <li><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Past releases</li>
+                      </ul>
+                      <div class="noRecordsSection" ng-show="pageController.children.length == 0" style="padding: 20px 20px 0px 20px;">
+                          <i class="fa fa-exclamation-triangle"></i> No Records Found.
+                      </div>
+                    </uib-tab>
+                </uib-tabset>
+            </div>
+            <div class="lv-footer">
+                Footer
+            </div>
+
+        </form>
+    </div>
+</div>

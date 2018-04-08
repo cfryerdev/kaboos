@@ -1,0 +1,42 @@
+<div id="header" class="header-main" ng-class="{ 'search-toggled': navCtrl.isSearching }">
+    <ul class="header-inner clearfix">
+      <li id="menu-trigger" data-target="mainmenu" data-toggle-sidebar ng-click="navCtrl.sidebarToggle = !navCtrl.sidebarToggle" ng-class="{ 'open': navCtrl.sidebarToggle }">
+          <div class="line-wrap">
+              <div class="line top"></div>
+              <div class="line center"></div>
+              <div class="line bottom"></div>
+          </div>
+      </li>
+      <li class="logo">
+          <a class="app-name" href="#/"><i class="fa fa-puzzle-piece fa-lg"></i> KABOOS</a>
+      </li>
+      <li class="pull-right" ng-if="navCtrl.isLoggedIn">
+          <ul class="top-menu">
+              <li id="top-search" class="">
+                  <a href="" data-ng-click="navCtrl.openSearch()"><i class="tm-icon fa fa-search"></i></a>
+              </li>
+              <li class="dropdown" uib-dropdown>
+                  <a href="#/notifications">
+                      <i class="tm-icon fa fa-bell"></i>
+                      <i class="tmn-counts" ng-show="navCtrl.notificationCount > 0">{{navCtrl.notificationCount}}</i>
+                  </a>
+              </li>
+              <li class="dropdown" uib-dropdown>
+                  <a href="#/accounts/invites">
+                      <i class="tm-icon fa fa-envelope"></i>
+                      <i class="tmn-counts" ng-show="navCtrl.inviteCount > 0">{{navCtrl.inviteCount}}</i>
+                  </a>
+              </li>
+          </ul>
+      </li>
+  </ul>
+  <div id="top-search-wrap">
+      <div class="tsw-inner">
+          <i class="fa fa-undo" id="top-search-close" ng-click="navCtrl.closeSearch()"></i>
+          <input type="text" placeholder="Search...">
+          <a href="#/searchresults" ng-click="navCtrl.closeSearch()" class="btn" style="height: 40px; margin-top: -8px; box-shadow: none;">
+            <i class="fa fa-search fa-2x"></i>
+          </a>
+      </div>
+  </div>
+</div>

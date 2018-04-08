@@ -1,0 +1,49 @@
+<div>
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="modalCtrl.cancel()" aria-hidden="true">×</button>
+        <h3 class="modal-title" ng-bind="modalCtrl.title"></h3>
+    </div>
+    <div class="modal-body">
+      <fieldset>
+
+          <div class="form-group">
+              <label for="name" class="field-label">Selected Project</label>
+              <div class="field-input">
+                  <input type="text" class="form-control disabled" id="name" name="name" ng-model="modalCtrl.projectName" disabled>
+              </div>
+          </div>
+
+          <div class="form-group">
+              <label for="type" class="field-label">{{modalCtrl.projectType}} Project</label>
+              <div class="field-input select">
+                <select class="form-control required" id="type" ng-model="modalController.model.companyMemberType">
+                  <option value="">-- Select --</option>
+                  <option ng-repeat="item in modalCtrl.projects" value="{{item._id}}">
+                      {{item.name}}
+                  </option>
+                </select>
+              </div>
+          </div>
+
+          <div class="form-group">
+              <label for="emailAddress" class="field-label">Name</label>
+              <div class="field-input">
+                  <input type="text" class="form-control required" id="name" name="name" ng-model="modalCtrl.model.name" placeholder="Name">
+              </div>
+          </div>
+
+          <div class="form-group">
+              <label for="emailAddress" class="field-label">Description</label>
+              <div class="field-input">
+                  <input type="text" class="form-control" id="description" name="description" ng-model="modalCtrl.model.description" placeholder="Description">
+              </div>
+          </div>
+
+      </fieldset>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-link waves-effect" ng-click="modalCtrl.cancel()" type="button" ng-bind="modalCtrl.cancelText" />
+        <button class="btn btn-link waves-effect" ng-click="modalCtrl.add()" ng-bind="modalCtrl.okText" />
+    </div>
+
+</div>

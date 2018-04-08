@@ -1,0 +1,21 @@
+{
+  "config": {
+      "target": "http://localhost:8080/api",
+      "phases": [
+        { "duration": 120, "arrivalRate": 10 }
+      ],
+      "defaults": {
+        "headers": {
+          "content-type": "application/json",
+          "cookie": "connect.sid=s%3ApObwShA4upl2uIjeG71_6-Vyx3Bwrls_.L5HzNpGCDQuz0uXhh%2FaMjcNTpqm4ogUpmNm4Dez7Q5U"
+        }
+      }
+  },
+  "scenarios": [
+    {
+      "flow": [
+        { "get": {"url": "/companies"}}
+      ]
+    }
+  ]
+}

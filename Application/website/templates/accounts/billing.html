@@ -1,0 +1,31 @@
+﻿<div>
+    <form class="form-horizontal" name="pageController.pageForm" ng-submit="pageController.saveProfile()" novalidate>
+        <h2>
+            <i class="fa fa-money"></i>
+            Billing & Payments
+
+            <span class="pull-right">
+                <button type="submit" class="btn btn-success" title="Save" ng-disabled="pageController.isSaving">
+                    Pay Now
+                </button>
+            </span>
+        </h2>
+        <ul class="breadcrumb">
+            <li><a href="#/dashboard">Dashboard</a></li>
+            <li class="active">Edit Billing</li>
+        </ul>
+        <div ng-controller="AlertCtrl as alertCtrl">
+            <alert ng-repeat="alert in alertCtrl.alerts" type="{{alert.type}}" close="alertCtrl.closeAlert($index)"><i class="fa fa-exclamation-circle fa-lg"></i> <span ng-bind-html="alert.msg"></span></alert>
+        </div>
+
+        <tabset>
+            <tab heading="Information">
+                Coming Soon.
+            </tab>
+            <tab heading="Transactions">
+                Coming Soon.
+            </tab>
+
+        </tabset>
+    </form>
+</div>

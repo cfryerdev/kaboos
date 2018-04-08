@@ -1,0 +1,15 @@
+# Generated folders
+/node_modules
+/Application/node_modules
+/Load/node_modules
+/Application/website/build
+/Application/website/_build
+/Application/website/libs
+/Application/website/_libs
+/Database/
+/Application/npm-debug.log.*
+# A folder disguised as a file
+.vscode
+
+# Files Extensions
+/Load/artillery_report_*.json

@@ -1,0 +1,113 @@
+
+<div class="block-header no-breadcrum">
+  <h2>Wizard - New Team
+    <small>Lets create a new team together!</small>
+  </h2>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h2>Step 1 <small>Which company does this belong to?</small></h2>
+    </div>
+    <div class="card-body card-padding-full next-step-bottom">
+      <label for="name" class="field-label">Company</label>
+      <div class="field-input select">
+        <select class="form-control required" id="companies" ng-model="pageController.team.companyId" ng-change="pageController.selectCompany()">
+        <optgroup>
+          <option value="">-- Select --</option>
+          <option ng-repeat="item in pageController.companies"
+              value="{{item._id}}">
+              {{item.name}}
+          </option>
+        </optgroup>
+        </select>
+      </div>
+    </div>
+</div>
+
+<div ng-show="pageController.step == 1" class="next-step-attached">
+  <button class="btn btn-login bgm-deeppurple btn-float waves-effect waves-circle" ng-click="pageController.setStep(2)"><i class="fa fa-arrow-right down"></i></button>
+</div>
+<div ng-show="pageController.step > 1" class="next-step-attached" style="height: 60px;">
+  <button type="button" class="btn btn-login bgm-gray btn-float"><i class="fa fa-thumbs-up" style="color: #fff;"></i></button>
+</div>
+
+<div class="card" ng-show="pageController.step > 1">
+    <div class="card-header">
+        <h2>Step 2 <small>Tell us about this new team.</small></h2>
+    </div>
+    <div class="card-body card-padding-full next-step-bottom">
+      <div class="form-group" data-ng-class="{'has-error': pageController.pageForm.name.$invalid && pageController.isSubmitted}">
+          <label for="companyName" class="field-label">Company</label>
+          <div class="field-input">
+              <input class="form-control" id="companyName" type="text" placeholder="Company" disabled="" ng-model="pageController.companyName">
+          </div>
+      </div>
+      <div class="form-group" data-ng-class="{'has-error': pageController.pageForm.name.$invalid && pageController.isSubmitted}">
+          <label for="name" class="field-label">Name</label>
+          <div class="field-input">
+              <input type="text" class="form-control required" id="name" name="name" ng-model="pageController.team.name" required placeholder="Name">
+          </div>
+      </div>
+      <div class="form-group">
+          <label for="products" class="field-label">Description</label>
+          <div class="field-input">
+              <textarea class="form-control" rows="3" id="description" ng-model="pageController.team.description" placeholder="Description"></textarea>
+          </div>
+      </div>
+    </div>
+</div>
+
+<div ng-show="pageController.step == 2" class="next-step-attached">
+  <button class="btn btn-login bgm-deeppurple btn-float waves-effect waves-circle" ng-click="pageController.setStep(3)"><i class="fa fa-arrow-right down"></i></button>
+</div>
+<div ng-show="pageController.step > 2" class="next-step-attached" style="height: 60px;">
+  <button type="button" class="btn btn-login bgm-gray btn-float"><i class="fa fa-thumbs-up" style="color: #fff;"></i></button>
+</div>
+
+<div class="card" ng-show="pageController.step > 2">
+    <div class="card-header">
+        <h2>Step 3 <small>Who is on this new team?</small></h2>
+    </div>
+    <div class="card-body card-padding-full next-step-bottom">
+      <p class="c-black f-500 m-b-20">Members</p>
+      <div class="checkbox m-b-15" ng-repeat="item in pageController.members" ng-if="pageController.members.length > 0">
+          <label>
+              <input type="checkbox" ng-model="bool" ng-checked="pageController.isCheckedMember(item._id, bool)" /> <i class="input-helper"></i> {{item.userProfile.displayName}}
+          </label>
+          <small class="checkbox-desc">{{(item.companyMemberType.name) || "No Role"}}</small>
+          <small class="checkbox-desc">{{(item.userProfile.emailAddress) || "No Contact Info"}}</small>
+      </div>
+      <div ng-if="pageController.members.length == 0">No members were found.</div>
+    </div>
+</div>
+
+<div ng-show="pageController.step == 3" class="next-step-attached">
+  <button class="btn btn-login bgm-deeppurple btn-float waves-effect waves-circle" ng-click="pageController.setStep(4)"><i class="fa fa-arrow-right down"></i></button>
+</div>
+<div ng-show="pageController.step > 3" class="next-step-attached" style="height: 60px;">
+  <button type="button" class="btn btn-login bgm-gray btn-float"><i class="fa fa-thumbs-up" style="color: #fff;"></i></button>
+</div>
+
+<div class="card" ng-show="pageController.step > 3">
+    <div class="card-header">
+        <h2>Step 4 <small>What projects does this team work on?</small></h2>
+    </div>
+    <div class="card-body card-padding-full next-step-bottom">
+      <p class="c-black f-500 m-b-20">Projects</p>
+      <div class="checkbox m-b-15" ng-repeat="item in pageController.projects" ng-if="pageController.projects.length > 0">
+          <label>
+              <input type="checkbox" ng-model="bool" ng-checked="pageController.isCheckedProject(item._id, bool)" /> <i class="input-helper"></i> {{item.name}}
+          </label>
+          <small class="checkbox-desc">{{(item.description) || "No Description"}}</small>
+      </div>
+      <div ng-if="pageController.projects.length == 0">No projects were found.</div>
+    </div>
+</div>
+
+<div ng-show="pageController.step == 4" class="next-step-attached">
+  <button class="btn btn-login btn-success btn-float waves-effect waves-circle" ng-click="pageController.save()"><i class="fa fa-save"></i></button>
+</div>
+
+<br />
+<br />

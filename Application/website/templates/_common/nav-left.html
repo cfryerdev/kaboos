@@ -1,0 +1,76 @@
+<aside id="sidebar" data-ng-class="{ 'toggled': navCtrl.sidebarToggle }" >
+  <div class="sidebar-inner c-overflow">
+
+      <div class="profile-menu" ng-if="navCtrl.isLoggedIn">
+          <a href="" toggle-submenu>
+              <div class="profile-info">
+                  {{navCtrl.account.displayName}}
+                  <small>{{navCtrl.account.emailAddress}}</small>
+              </div>
+          </a>
+      </div>
+
+      <ul class="main-menu" ng-if="!navCtrl.isLoggedIn">
+          <li ng-class="navCtrl.checkActiveRoute('/accounts/login')">
+              <a href="#/accounts/login" ng-click="navCtrl.sidebarStat($event)"><i class="fa fa-unlock"></i> Login</a>
+          </li>
+          <li ng-class="navCtrl.checkActiveRoute('/accounts/register')">
+              <a href="#/accounts/register" ng-click="navCtrl.sidebarStat($event)"><i class="fa fa-user-plus"></i> Register</a>
+          </li>
+          <li ng-class="navCtrl.checkActiveRoute('/accounts/forgotpassword')">
+              <a href="#/accounts/forgotpassword" ng-click="navCtrl.sidebarStat($event)"><i class="fa fa-envelope"></i> Forgot Password</a>
+          </li>
+      </ul>
+
+      <ul class="main-menu" ng-if="navCtrl.isLoggedIn">
+        <li class="profile" ng-class="navCtrl.checkActiveRoute('/accounts/profile')">
+            <a href="#/accounts/profile" ng-click="navCtrl.sidebarStat($event)"><i class="fa fa-user"></i> Profile</a>
+        </li>
+        <li>
+            <a href="#/accounts/logoff" ng-click="navCtrl.sidebarStat($event)"><i class="fa fa-lock"></i> Logout</a>
+        </li>
+      </ul>
+
+      <!-- <ul class="main-menu" ng-if="navCtrl.isLoggedIn">
+        <li class="visible-xs">
+            <a href="" ng-click="navCtrl.openSearch(); navCtrl.sidebarStat($event)"><i class="fa fa-search"></i> Search</a>
+        </li>
+        <li class="visible-xs">
+            <a href="#/notifications" ng-click="navCtrl.sidebarStat($event)">
+              <span class="badge active pull-right" ng-if="navCtrl.notificationCount > 0">{{navCtrl.notificationCount}}</span>
+              <i class="fa fa-bell"></i> Notifications
+            </a>
+        </li>
+        <li class="visible-xs">
+
+            <a href="#/accounts/invites" ng-click="navCtrl.sidebarStat($event)">
+              <span class="badge active pull-right" ng-if="navCtrl.inviteCount > 0">{{navCtrl.inviteCount}}</span>
+              <i class="fa fa-envelope"></i> Invites
+            </a>
+        </li>
+      </ul> -->
+
+      <ul class="main-menu" ng-if="navCtrl.isLoggedIn">
+          <li class="dashboard" ng-class="navCtrl.checkActiveRoute('/dashboard')">
+              <a href="#/dashboard" ng-click="navCtrl.sidebarStat($event)"><i class="fa fa-bar-chart"></i> Dashboard</a>
+          </li>
+          <li class="favorites" ng-class="navCtrl.checkActiveRoute('/favorites')">
+              <a href="#/favorites" ng-click="navCtrl.sidebarStat($event)"><i class="fa fa-heart"></i> My Favorites</a>
+          </li>
+          <li class="release" ng-class="navCtrl.checkActiveRoute('/releases')">
+              <a href="#/releases" ng-click="navCtrl.sidebarStat($event)"><i class="fa fa-calendar"></i> Releases</a>
+          </li>
+          <li class="company" ng-class="navCtrl.checkActiveRoute('/companies')">
+              <a href="#/companies" ng-click="navCtrl.sidebarStat($event)"><i class="fa fa-puzzle-piece"></i> My Companies</a>
+          </li>
+          <li class="wizard sub-menu" ng-class="{ 'active toggled': navCtrl.wizardToggle || navCtrl.checkActiveRoute('/wizard') }">
+              <a href="" ng-click="navCtrl.wizardToggle = !navCtrl.wizardToggle"><i class="fa fa-sliders"></i> Wizards</a>
+              <ul>
+                <li class="wizard-release" ng-class="navCtrl.checkActiveRoute('/wizard/release')"><a href="#/wizard/release" ng-click="navCtrl.sidebarStat($event)"><i class="fa fa-bolt"></i> New Release</a></li>
+                <li class="wizard-project" ng-class="navCtrl.checkActiveRoute('/wizard/project')"><a href="#/wizard/project" ng-click="navCtrl.sidebarStat($event)"><i class="fa fa-bolt"></i> New Project</a></li>
+                <li class="wizard-team" ng-class="navCtrl.checkActiveRoute('/wizard/team')"><a href="#/wizard/team" ng-click="navCtrl.sidebarStat($event)"><i class="fa fa-bolt"></i> New Team</a></li>
+              </ul>
+          </li>
+      </ul>
+  </div>
+</aside>

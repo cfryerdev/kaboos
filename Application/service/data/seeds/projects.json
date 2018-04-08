@@ -1,0 +1,29 @@
+[
+	{
+		"_id": "582e68e7f4a8d6148840ba43",
+		"projectType_id": "582e68e7f4a8d6148840ba35",
+		"description": "Release Management and Tech Startup support application. (WEB)",
+		"name": "Kaboos Lite - WEB",
+		"company_id": "582e68e7f4a8d6148840ba3e"
+	},
+	{
+		"_id": "582e68e7f4a8d6148840ba44",
+		"projectType_id": "582e68e7f4a8d6148840ba33",
+		"description": "Release Management and Tech Startup support application. (API)",
+		"name": "Kaboos Lite - API",
+		"company_id": "582e68e7f4a8d6148840ba3e"
+	},
+	{
+		"_id": "582e68e7f4a8d6148840ba45",
+		"projectType_id": "582e68e7f4a8d6148840ba35",
+		"description": "",
+		"name": "Counsel Connect",
+		"company_id": "582e68e7f4a8d6148840ba3e"
+	},
+	{
+		"_id": "582e6e7ab37e551f00a6f6c5",
+		"company_id": "582e68e7f4a8d6148840ba3e",
+		"description": "Some Sample Project",
+		"name": "Sample Project"
+	}
+]

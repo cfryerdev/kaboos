@@ -1,0 +1,14 @@
+[
+	{
+		"name": "Demo Company",
+		"description": "ePixelation: Utilizing the best technologies to get it done better.",
+		"isActive": true,
+		"_id": "582e68e7f4a8d6148840ba3e"
+	},
+	{
+		"name": "Your Company",
+		"description": "Some company name goes here.",
+		"isActive": true,
+		"_id": "582e68e7f4a8d6148840ba3f"
+	}
+]

@@ -1,0 +1,46 @@
+<ul class="breadcrumb">
+    <li><a href="#/dashboard">Dashboard</a></li>
+    <li class="active">Notifications</li>
+</ul>
+
+<div class="card">
+    <div class="card-header bgm-cyan">
+        <h2>Notifications <small>Here you can find where events are trying to get your attention.</small></h2>
+    </div>
+
+
+    <div class="card-body">
+      <ul class="pv-follow no-gap">
+          <li>
+            <i class="fa fa-bell-o"></i> Unread Notifications
+          </li>
+      </ul>
+      <div class="noRecordsSection" ng-show="pageController.unread_notifications.length == 0" style="padding: 20px;">
+          <i class="fa fa-exclamation-triangle"></i> No Records Found.
+      </div>
+      <div class="list-group" ng-show="pageController.unread_notifications.length > 0" style="margin-bottom: 0px;">
+          <a ng-click="pageController.viewNotification(item)" class="list-group-item notification" ng-repeat="item in pageController.unread_notifications" style="cursor: pointer;">
+              <span class="badge bgm-red pull-right list-card-tag" ng-if="!item.isViewed">NEW</span>
+              <h4 class="list-group-item-heading"><i class="fa fa-angle-right"></i> {{item.subject}}</h4>
+              <p class="list-group-item-text shorten-text" style="padding-bottom: 10px;">{{item.body}}</p>
+              <p class="list-group-item-text shorten-text text-right"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ item.createdAt | date:'medium'}}</p>
+          </a>
+      </div>
+
+      <ul class="pv-follow no-gap">
+          <li>
+            <i class="fa fa-bell-slash-o"></i> Read Notifications
+          </li>
+      </ul>
+      <div class="noRecordsSection" ng-show="pageController.read_notifications.length == 0" style="padding: 20px;">
+          <i class="fa fa-exclamation-triangle"></i> No Records Found.
+      </div>
+      <div class="list-group" ng-show="pageController.read_notifications.length > 0" style="margin-bottom: 0px;">
+          <a ng-click="pageController.viewNotification(item)" class="list-group-item notification" ng-repeat="item in pageController.read_notifications" style="cursor: pointer;">
+              <h4 class="list-group-item-heading"><i class="fa fa-angle-right"></i> {{item.subject}}</h4>
+              <p class="list-group-item-text shorten-text" style="padding-bottom: 10px;">{{item.body}}</p>
+              <p class="list-group-item-text shorten-text text-right"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ item.createdAt | date:'medium'}}</p>
+          </a>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+[
+	{
+		"_id": "58339c755b2d62121cbe7011",
+		"updatedAt": "2016-11-22T01:16:37.221Z",
+		"createdAt": "2016-11-22T01:16:37.221Z",
+		"isViewed": true,
+		"isRead": true,
+		"body": "Bacon ipsum dolor amet prosciutto pancetta bacon cow salami, capicola boudin frankfurter. Pork bresaola pastrami jerky, fatback cupim tongue bacon rump filet mignon spare ribs. Corned beef rump shoulder leberkas capicola ball tip kielbasa ham hock meatball pastrami pork belly swine tail sirloin andouille. Turkey cupim t-bone shoulder, doner cow tail boudin fatback pork chicken drumstick tenderloin prosciutto. Beef beef ribs shankle pork loin ball tip filet mignon venison pork leberkas. Meatloaf landjaeger tri-tip short loin salami hamburger ground round leberkas kielbasa beef ribs bresaola.Bresaola capicola spare ribs sausage strip steak chicken doner ham. Burgdoggen brisket venison shank meatball pork turkey shoulder landjaeger boudin beef, beef ribs short loin pancetta. Boudin filet mignon bacon tail beef, frankfurter ribeye beef ribs andouille meatloaf short ribs pork loin corned beef shoulder. T-bone meatloaf ribeye kevin. Turkey cow jerky drumstick doner pork loin landjaeger brisket.",
+		"subject": "This is a message subject.",
+		"userProfile_id": "582e68e7f4a8d6148840ba3c"
+	},
+	{
+		"_id": "58339c755b2d62121cbe700f",
+		"updatedAt": "2016-11-22T01:16:37.218Z",
+		"createdAt": "2016-11-22T01:16:37.218Z",
+		"isViewed": false,
+		"isRead": false,
+		"body": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+		"subject": "You have a demo message!",
+		"userProfile_id": "582e68e7f4a8d6148840ba3c"
+	},
+	{
+		"_id": "58339c755b2d62121cbe7010",
+		"updatedAt": "2016-11-22T01:16:37.220Z",
+		"createdAt": "2016-11-22T01:16:37.220Z",
+		"isViewed": true,
+		"isRead": false,
+		"body": "Another message body goes here though.",
+		"subject": "Another message here!",
+		"userProfile_id": "582e68e7f4a8d6148840ba3c"
+	}
+]

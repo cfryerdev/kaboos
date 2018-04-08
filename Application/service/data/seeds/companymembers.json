@@ -1,0 +1,26 @@
+[
+	{
+		"companyMemberType_id": "582e68e7f4a8d6148840ba36",
+		"company_id": "582e68e7f4a8d6148840ba3e",
+		"userProfile_id": "582e68e7f4a8d6148840ba3c",
+		"_id": "582e68e7f4a8d6148840ba40"
+	},
+	{
+		"companyMemberType_id": "582e68e7f4a8d6148840ba3a",
+		"company_id": "582e68e7f4a8d6148840ba3e",
+		"userProfile_id": "582e68e7f4a8d6148840ba3d",
+		"_id": "582e68e7f4a8d6148840ba41"
+	},
+	{
+		"companyMemberType_id": "582e68e7f4a8d6148840ba3a",
+		"company_id": "582e68e7f4a8d6148840ba3e",
+		"userProfile_id": "582e68e7f4a8d6148840ba3e",
+		"_id": "582e68e7f4a8d6148840ba42"
+	},
+	{
+		"companyMemberType_id": "582e68e7f4a8d6148840ba3a",
+		"company_id": "582e68e7f4a8d6148840ba3e",
+		"userProfile_id": "582e68e7f4a8d6148840ba3f",
+		"_id": "582e68e7f4a8d6148840ba43"
+	}
+]

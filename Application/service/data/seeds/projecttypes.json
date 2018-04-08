@@ -1,0 +1,17 @@
+[
+	{
+		"_id": "582e68e7f4a8d6148840ba33",
+		"description": "Public RESTful API",
+		"name": "Public RESTful API"
+	},
+	{
+		"_id": "582e68e7f4a8d6148840ba34",
+		"description": "Private RESTful API",
+		"name": "Private RESTful API"
+	},
+	{
+		"_id": "582e68e7f4a8d6148840ba35",
+		"description": "Public Web Application",
+		"name": "Public Web Application"
+	}
+]

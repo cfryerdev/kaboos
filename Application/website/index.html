@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="icon" type="image/png" href="./favicon.ico">
+        <title>KABOOS</title>
+
+        <script src="https://code.angularjs.org/1.5.5/angular.min.js"></script>
+        <script src="https://code.angularjs.org/1.5.5/angular-animate.min.js"></script>
+        <script src="https://code.angularjs.org/1.5.5/angular-cookies.js"></script>
+        <script src="https://code.angularjs.org/1.5.5/angular-route.min.js"></script>
+        <script src="https://code.angularjs.org/1.5.5/angular-sanitize.min.js"></script>
+        <!-- <script src="https://code.angularjs.org/1.5.5/angular-message-format.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/2.0.0/toaster.min.js"></script>
+        <script src="https://code.angularjs.org/1.5.5/angular-aria.min.js"></script>
+        <script src="https://code.angularjs.org/1.5.5/angular-messages.js"></script>
+
+        <link href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css" rel="stylesheet" type="text/css">
+        <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.2/moment.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.js"></script>
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.css" rel="stylesheet" type="text/css" />
+        <!-- <link rel="stylesheet" href="_libs/fullcalendar/dist/fullcalendar.css"/>
+        <script type="text/javascript" src="_libs/angular-ui-calendar/src/calendar.js"></script>
+        <script type="text/javascript" src="_libs/fullcalendar/dist/fullcalendar.min.js"></script>
+        <script type="text/javascript" src="_libs/fullcalendar/dist/gcal.js"></script> -->
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.js"></script>
+
+        <script src="/_build/kaboos.scripts.js"></script>
+
+        <link href="/content/style/fontawesome/font-awesome.css" rel="stylesheet" type="text/css" />
+        <link href="/content/style/bootstrap/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="/content/style/bootstrap/bootstrap-theme.css" rel="stylesheet" type="text/css" />
+        <link href="/content/style/bootstrap/bootstrap-custom.css" rel="stylesheet" type="text/css" />
+        <link href="/content/style/orgtree.css" rel="stylesheet" type="text/css" />
+        <link href="/content/style/sidebar.css" rel="stylesheet" type="text/css" />
+        <link href="/content/style/loading-bar.css" rel="stylesheet" type="text/css" />
+
+    </head>
+
+    <body ng-app="KABOOS_APP" ng-cloak class="sw-toggled">
+
+        <div ng-controller="NavigationController as navCtrl" >
+          <div ng-include="'templates/_common/header.html'"></div>
+          <div ng-include="'templates/_common/nav-left.html'"></div>
+        </div>
+
+        <div class="container body-content" style="margin-top: 80px;">
+            <div><toaster-container></toaster-container></div>
+
+            <div ng-controller="AlertCtrl as alertCtrl">
+                <uib-alert ng-repeat="alert in alertCtrl.alerts" type="{{alert.type}}" close="alertCtrl.closeAlert($index)"><i class="fa fa-exclamation-circle fa-lg"></i> <span ng-bind-html="alert.msg"></span></uib-alert>
+            </div>
+            <section ng-view autoscroll="true"></section>
+            <footer>
+                <hr />
+                <div class="text-center">
+                  <img src="images/logo_small_clear.png" class="footer-epix-logo" />
+                </div>
+                <p class="text-center"><small>Copyright 2017 - All Rights Reserved</small></p>
+            </footer>
+        </div>
+    </body>
+</html>

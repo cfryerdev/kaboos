@@ -1,0 +1,35 @@
+<div>
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="modalCtrl.cancel()" aria-hidden="true">×</button>
+            <h3 class="modal-title" ng-bind="modalCtrl.title"></h3>
+        </div>
+        <div class="modal-body">
+          <fieldset>
+
+              <div class="form-group">
+                  <label for="name" class="field-label">Selected Team</label>
+                  <div class="field-input">
+                      <input type="text" class="form-control disabled" id="name" name="name" ng-model="modalCtrl.teamName" disabled>
+                  </div>
+              </div>
+
+
+              <div class="form-group">
+                  <label for="type" class="field-label">Project</label>
+                  <div class="field-input select">
+                    <select class="form-control required" id="type" ng-model="modalCtrl.selectedProjectId">
+                      <option value="">-- Select --</option>
+                      <option ng-repeat="item in modalCtrl.projects" value="{{item._id}}">
+                          {{item.name}}
+                      </option>
+                    </select>
+                  </div>
+              </div>
+
+          </fieldset>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-link waves-effect" ng-click="modalCtrl.cancel()" ng-bind="modalCtrl.cancelText"></button>
+            <button class="btn btn-link waves-effect" ng-click="modalCtrl.add()" ng-bind="modalCtrl.okText" />
+        </div>
+</div>

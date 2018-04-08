@@ -1,0 +1,99 @@
+.org-tree {
+
+}
+
+.org-tree li {
+    list-style-type: none;
+    margin: 0;
+    padding: 10px 5px 0 5px;
+    position:relative;
+}
+
+.org-tree li .badge{
+  margin-right: 3px;
+  margin-left: -4px;
+  height: 20px;
+}
+
+.org-tree li::before,
+.org-tree li::after {
+    content:'';
+    left:-20px;
+    position:absolute;
+    right:auto;
+}
+
+.org-tree li::before {
+    border-left:1px solid #999;
+    bottom:50px;
+    height:100%;
+    top:0;
+    width:1px
+}
+
+.org-tree li::after {
+    border-top:1px solid #999;
+    height:20px;
+    top:25px;
+    width:25px;
+}
+
+.org-tree li .item-label {
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border:1px solid #999;
+    border-radius:5px;
+    display:inline-block;
+    padding:3px 8px;
+    text-decoration:none;
+}
+
+.org-tree li.parent_li>.item-label {
+    cursor:pointer;
+}
+
+.org-tree>ul>li::before, .org-tree>ul>li::after {
+    border:0;
+}
+
+.org-tree li:last-child::before {
+    height:25px;
+}
+
+.org-tree li.parent_li>.item-label:hover,
+.org-tree li.parent_li>.item-label:hover+ul li .item-label {
+    background:#eee;
+    border:1px solid #94a0b4;
+    color:#000;
+}
+
+.org-tree li.parent_li>.item-label:hover,
+.org-tree li.parent_li>.item-label:hover+ul li .item-label {
+    background: #BFDBF2;
+}
+
+.org-tree li span {
+    padding: 5px;
+}
+
+.org-tree li span:hover {
+    cursor: pointer;
+    background: #e2e2e2;
+}
+
+.org-tree li.parent_li>.item-label:hover,
+.org-tree li.parent_li>.item-label:hover+ul li .item-label {
+    background: #BFDBF2;
+}
+
+.org-tree .no-records {
+  color: #babbbc;
+  cursor: auto;
+  margin-top: 10px !important;
+  display: table-cell;
+}
+
+.org-tree .no-records:hover {
+  background: #fff;
+  cursor: auto;
+}

@@ -1,0 +1,324 @@
+<div class="alert alert-warning" role="alert" type="warning" ng-if="!pageController.company.isActive">
+    <div>
+      <i class="fa fa-exclamation-circle fa-lg ng-scope"></i> <span>You are currently viewing a disabled company.</span>
+    </div>
+</div>
+
+<div load-company>
+    <ul class="breadcrumb">
+        <li><a href="#/dashboard">Dashboard</a></li>
+        <li><a href="#/companies">Companies</a></li>
+        <li class="active">Edit Company</li>
+    </ul>
+
+    <div class="card">
+        <form class="form-horizontal" name="pageForm" ng-submit="pageController.saveCompanyData()" novalidate>
+
+            <div class="card-header bgm-bluegray">
+                <h2>
+                  <add-favorite type="company" class="pull-right"></add-favorite>
+                  <i class="fa fa-puzzle-piece"></i> Company <small>{{ pageController.isNew ? "This is a new company." : "You were invited to this company."}}</small>
+                </h2>
+
+                <button class="btn bgm-red btn-float waves-effect" type="button" style="margin-right: 70px;" ng-click="pageController.deleteCompanyData()" ng-if="!pageController.isNew"><i class="fa fa-trash"></i></button>
+                <button class="btn bgm-green btn-float waves-effect" type="submit" ><i class="fa fa-floppy-o"></i></button>
+            </div>
+            <div class="card-body">
+                <div ng-show="pageController.isLoading" class="loadingSection">
+                    <i class="fa fa-circle-o-notch fa-spin fa-lg"></i> Loading... please wait.
+                </div>
+                <uib-tabset active="active" ng-show="!pageController.isLoading" class="nav-justified" >
+                    <uib-tab heading="Information">
+
+                      <div ng-show="!pageController.isLoading" class="card-body card-padding">
+                          <div class="form-group" data-ng-class="{'has-error': pageController.pageForm.name.$invalid && pageController.isSubmitted}">
+                              <label for="name" class="field-label">Name</label>
+                              <div class="field-input">
+                                  <input type="text" class="form-control required" id="name" name="name" ng-model="pageController.company.name" required placeholder="Name">
+                              </div>
+                          </div>
+
+                          <div class="form-group">
+                              <label for="products" class="field-label">Description</label>
+                              <div class="field-input">
+                                  <textarea class="form-control" rows="3" id="description" ng-model="pageController.company.description" placeholder="Description"></textarea>
+                              </div>
+                          </div>
+                      </div>
+
+                    </uib-tab>
+                    <uib-tab heading="Projects" ng-show="!pageController.isNew">
+
+                        <ul class="pv-follow section-title list">
+                            <li>
+                              <i class="fa fa-list-ul"></i> Current Projects
+                              <ul class="actions actions pull-right" ng-show="!pageController.isNew">
+                                  <li class="dropdown" uib-dropdown="">
+                                      <a href="#" uib-dropdown-toggle="" aria-expanded="false" class="dropdown-toggle  pull-right" aria-haspopup="true">
+                                          <i class="fa fa-ellipsis-v"></i>
+                                      </a>
+                                      <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="#/companies/{{pageController.company._id}}/projects/new">Add Project</a></li>
+                                      </ul>
+                                  </li>
+                              </ul>
+                            </li>
+                        </ul>
+
+                        <div ng-show="pageController.isLoading" class="loadingSection">
+                            <i class="fa fa-circle-o-notch fa-spin fa-lg"></i> Loading... please wait.
+                        </div>
+                        <div class="noRecordsSection" ng-show="pageController.projects.length == 0">
+                            <i class="fa fa-exclamation-triangle"></i> No Records Found.
+                        </div>
+                        <div class="list-group tabbed-content-no-margin" ng-show="pageController.projects.length > 0">
+                            <a href="#/companies/{{pageController.company._id}}/projects/{{item._id}}" class="list-group-item project" ng-repeat="item in pageController.projects | orderBy:'name'">
+                                <h4 class="list-group-item-heading"><i class="fa fa-angle-right"></i> {{item.name}}</h4>
+                                <p class="list-group-item-text">{{ (item.description) || "No Description"}}</p>
+                            </a>
+                        </div>
+                    </uib-tab>
+                    <uib-tab heading="Teams" ng-show="!pageController.isNew">
+
+                      <ul class="pv-follow section-title list">
+                          <li>
+                            <i class="fa fa-list-ul"></i> Current Teams
+                            <ul class="actions actions pull-right" ng-show="!pageController.isNew">
+                                <li class="dropdown" uib-dropdown="">
+                                    <a href="#" uib-dropdown-toggle="" aria-expanded="false" class="dropdown-toggle  pull-right" aria-haspopup="true">
+                                        <i class="fa fa-ellipsis-v"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                      <li><a href="#/companies/{{pageController.company._id}}/teams/new">Add Team</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                          </li>
+                      </ul>
+
+                        <div ng-show="pageController.isLoading" class="loadingSection">
+                            <i class="fa fa-circle-o-notch fa-spin fa-lg"></i> Loading... please wait.
+                        </div>
+                        <div class="noRecordsSection" ng-show="pageController.teams.length == 0">
+                            <i class="fa fa-exclamation-triangle"></i> No Records Found.
+                        </div>
+                        <div class="list-group tabbed-content-no-margin" ng-show="pageController.teams.length > 0">
+                            <a href="#/companies/{{pageController.company._id}}/teams/{{item._id}}" class="list-group-item team" ng-repeat="item in pageController.teams | orderBy:'name'">
+                                <h4 class="list-group-item-heading"><i class="fa fa-angle-right"></i> {{item.name}}</h4>
+                                <p class="list-group-item-text">{{ (item.description) || "No Description"}}</p>
+                            </a>
+                        </div>
+                    </uib-tab>
+                    <uib-tab heading="Members" ng-show="!pageController.isNew">
+
+                        <ul class="pv-follow section-title list">
+                            <li>
+                              <i class="fa fa-list-ul"></i> Current Members
+                              <ul class="actions actions pull-right" ng-show="!pageController.isNew">
+                                  <li class="dropdown" uib-dropdown="">
+                                      <a href="#" uib-dropdown-toggle="" aria-expanded="false" class="dropdown-toggle  pull-right" aria-haspopup="true">
+                                          <i class="fa fa-ellipsis-v"></i>
+                                      </a>
+                                      <ul class="dropdown-menu dropdown-menu-right">
+                                          <li><a href="" ng-click="pageController.openInviteModal()">Invite Member</a></li>
+                                      </ul>
+                                  </li>
+                              </ul>
+                            </li>
+                        </ul>
+
+                        <div ng-show="pageController.isLoading" class="loadingSection">
+                            <i class="fa fa-circle-o-notch fa-spin fa-lg"></i> Loading... please wait.
+                        </div>
+                        <div class="noRecordsSection" ng-show="pageController.members.length == 0">
+                            <i class="fa fa-exclamation-triangle"></i> No Records Found.
+                        </div>
+                        <div class="list-group tabbed-content-no-margin" ng-show="pageController.members.length > 0">
+                            <a class="list-group-item profile" ng-repeat="item in pageController.members">
+                                <span class="badge bgm-teal pull-right list-card-tag project">{{item.companyMemberType.name}}</span>
+                                <h4 class="list-group-item-heading"><i class="fa fa-angle-right"></i> {{item.userProfile.displayName}}</h4>
+                                <div><strong>Title:</strong> {{item.userProfile.title ? item.userProfile.title : 'N/A'}}</div>
+                                <div><strong>Email:</strong> {{item.userProfile.emailAddress ? item.userProfile.emailAddress : 'N/A'}}</div>
+                            </a>
+                        </div>
+                    </uib-tab>
+
+                    <uib-tab heading="Topology" ng-show="!pageController.isNew">
+                      <div class="noRecordsSection" ng-show="pageController.topology == {}">
+                          <i class="fa fa-exclamation-triangle"></i> No Records Found.
+                      </div>
+                      <div class="org-tree" ng-show="pageController.topology != {}">
+                        <ul>
+                          <li><span class="item-label" style="background: #607d8b; color: #fff; border: 1px solid #fff;">{{ pageController.topology.name }}</span>
+                            <ul>
+                              <li>
+                                <span class="item-label" style="background: #009688; color: #fff; border: 1px solid #fff;">Members</span>
+                                <ul>
+                                  <li ng-repeat="member in pageController.topology.members">
+                                    <span class="item-label"><span class="badge" style="background: #009688;">&nbsp;</span> {{ member.userProfile.displayName }}</span>
+                                  </li>
+                                  <li ng-if="!pageController.topology.members || pageController.topology.members.length == 0"><span class="no-records">None</span></li>
+                                </ul>
+                              </li>
+
+                              <li>
+                                <span class="item-label" style="background: #9c27b0; color: #fff; border: 1px solid #fff;">Teams</span>
+                                <ul>
+                                  <li ng-repeat="team in pageController.topology.teams">
+                                    <span class="item-label"><span class="badge" style="background: #9c27b0;">&nbsp;</span> {{ team.name }}</span>
+                                  </li>
+                                  <li ng-if="!pageController.topology.teams || pageController.topology.teams.length == 0"><span class="no-records">None</span></li>
+                                </ul>
+                              </li>
+
+                              <li>
+                                <span class="item-label" style="background: #ff9800; color: #fff; border: 1px solid #fff;">Projects</span>
+                                <ul>
+                                  <li ng-repeat="project in pageController.topology.projects">
+                                    <span class="item-label"><span class="badge" style="background: #ff9800;">&nbsp;</span> {{ project.name }}</span>
+                                  </li>
+                                  <li ng-if="!pageController.topology.projects || pageController.topology.projects.length == 0"><span class="no-records">None</span></li>
+                                </ul>
+                              </li>
+
+                            </ul>
+                          </li>
+                        </ul>
+                      </div>
+                    </uib-tab>
+
+                    <!-- <uib-tab heading="Location" ng-show="!pageController.isNew">
+
+                      <div ng-show="!pageController.isLoading" class="card-body card-padding">
+                        <div class="form-group">
+                            <label for="name" class="field-label">Address (Line 1)</label>
+                            <div class="field-input">
+                                <input type="text" class="form-control" id="addr_line1" name="addr_line1" placeholder="Address (Line 1)">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="field-label">Address (Line 2)</label>
+                            <div class="field-input">
+                                <input type="text" class="form-control" id="addr_line2" name="addr_line2" placeholder="Address (Line 2)">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="field-label">City</label>
+                            <div class="field-input">
+                                <input type="text" class="form-control" id="addr_city" name="addr_city" placeholder="City">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="field-label">State</label>
+                            <div class="field-input">
+                                <input type="text" class="form-control" id="addr_state" name="addr_state" placeholder="State">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="field-label">Zip Code</label>
+                            <div class="field-input">
+                                <input type="text" class="form-control" id="addr_zip" name="addr_zip" placeholder="Zip Code">
+                            </div>
+                        </div>
+                      </div>
+
+                    </uib-tab> -->
+
+                    <uib-tab heading="Source Control" ng-show="!pageController.isNew">
+
+                      <div>
+                        <button type="button" style="width: 100%" class="btn bgm-gray" ng-click="pageController.hasVsOnline = !pageController.hasVsOnline">Visual Studio Online (TFS) <i class="fa fa-expand" aria-hidden="true"></i></button>
+                        <div uib-collapse="!pageController.hasVsOnline">
+
+                          <div ng-show="!pageController.isLoading" class="card-body card-padding">
+                            <br />
+                            <div class="form-group">
+                                <label for="name" class="field-label">Account Name</label>
+                                <div class="field-input">
+                                    <input type="text" class="form-control" id="tfs_acctName" name="tfs_acctName" placeholder="Account Name">
+                                </div>
+                                <small style="color: #9e9e9e;">https://{accountname}.visualstudio.com/</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="name" class="field-label">Username</label>
+                                <div class="field-input">
+                                    <input type="text" class="form-control" id="tfs_user" name="tfs_user" placeholder="Username">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="name" class="field-label">Access Token</label>
+                                <div class="field-input">
+                                    <input type="text" class="form-control" id="tfs_token" name="tfs_token" placeholder="Access Token">
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn btn-info pull-right">Test Connection</button>
+                            <br />
+                            <br />
+                          </div>
+
+                        </div>
+                      </div>
+                      <br />
+                      <div>
+                        <button type="button" style="width: 100%" class="btn bgm-gray" ng-click="pageController.hasGitlab = !pageController.hasGitlab">Gitlabs (GIT) <i class="fa fa-expand" aria-hidden="true"></i></button>
+                        <div uib-collapse="!pageController.hasGitlab">
+                          <div ng-show="!pageController.isLoading" class="card-body card-padding">
+                            <br />
+                            <div class="form-group">
+                                <label for="name" class="field-label">Host Url</label>
+                                <div class="field-input">
+                                    <input type="text" class="form-control" id="tfs_acctName" name="tfs_acctName" placeholder="Host Url">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="name" class="field-label">Access Token</label>
+                                <div class="field-input">
+                                    <input type="text" class="form-control" id="tfs_token" name="tfs_token" placeholder="Access Token">
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn btn-info pull-right">Test Connection</button>
+                            <br />
+                            <br />
+                          </div>
+                        </div>
+                      </div>
+                      <br />
+                      <div>
+                        <button type="button" style="width: 100%" class="btn bgm-gray" ng-click="pageController.hasGitHub = !pageController.hasGitHub">GITHUB (GIT) <i class="fa fa-expand" aria-hidden="true"></i></button>
+                        <div uib-collapse="!pageController.hasGitHub">
+                          <div ng-show="!pageController.isLoading" class="card-body card-padding">
+                            <br />
+
+                            <div class="form-group">
+                                <label for="name" class="field-label">Username</label>
+                                <div class="field-input">
+                                    <input type="text" class="form-control" id="ghub_user" name="ghub_user" placeholder="Username">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="name" class="field-label">Password</label>
+                                <div class="field-input">
+                                    <input type="text" class="form-control" id="ghub_pass" name="ghub_pass" placeholder="Password">
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn btn-info pull-right">Test Connection</button>
+                            <br />
+                            <br />
+                          </div>
+                        </div>
+                      </div>
+
+                    </uib-tab>
+
+                </uib-tabset>
+            </div>
+            <div class="lv-footer">
+                Footer
+            </div>
+
+        </form>
+    </div>
+</div>

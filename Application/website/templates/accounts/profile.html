@@ -1,0 +1,258 @@
+﻿<div>
+    <ul class="breadcrumb">
+        <li><a href="#/dashboard">Dashboard</a></li>
+        <li class="active">Edit Profile</li>
+    </ul>
+        <div class="card">
+          <form class="form-horizontal" name="pageController.pageForm" ng-submit="pageController.saveProfile()" novalidate>
+
+            <div class="card-header profile">
+                <h2><i class="fa fa-user-secret"></i> My Profile
+                  <small>This is all the data we store about you.</small>
+                </h2>
+                <button class="btn bgm-green btn-float waves-effect" type="submit" ><i class="fa fa-floppy-o"></i></button>
+            </div>
+            <div class="card-body">
+                <div ng-show="pageController.isLoading" class="loadingSection">
+                    <i class="fa fa-circle-o-notch fa-spin fa-lg"></i> Loading... please wait.
+                </div>
+                <uib-tabset active="active" ng-show="!pageController.isLoading" class="nav-justified" >
+                  <uib-tab heading="Information">
+
+                      <div ng-show="!pageController.isLoading" class="card-body card-padding">
+
+                        <fieldset ng-show="!pageController.isLoading">
+
+
+                          <div class="form-group" data-ng-class="{'has-error': pageController.pageForm.$invalid && pageController.isSubmitted}">
+                              <label for="displayName" class="field-label">Display Name</label>
+                              <div class="field-input">
+                                  <input type="text" class="form-control required" id="displayName" name="displayName" ng-model="pageController.profile.displayName" required placeholder="Display Name">
+                              </div>
+                          </div>
+
+                          <div class="form-group">
+                              <label for="firstName" class="field-label">First Name</label>
+                              <div class="field-input">
+                                  <input type="text" class="form-control" id="firstName" name="firstName" ng-model="pageController.profile.firstName" placeholder="First Name">
+                              </div>
+                          </div>
+
+                          <div class="form-group">
+                              <label for="lastName" class="field-label">Last Name</label>
+                              <div class="field-input">
+                                  <input type="text" class="form-control" id="lastName" name="lastName" ng-model="pageController.profile.lastName" placeholder="Last Name">
+                              </div>
+                          </div>
+
+                          <div class="form-group">
+                              <label for="title" class="field-label">Title</label>
+                              <div class="field-input">
+                                  <input type="text" class="form-control" id="title" name="title" ng-model="pageController.profile.title" placeholder="Title">
+                              </div>
+                          </div>
+
+                          <div class="form-group">
+                              <label for="website" class="field-label">Website</label>
+                              <div class="field-input">
+                                  <input type="text" class="form-control" id="website" name="website" ng-model="pageController.profile.website" placeholder="Website">
+                              </div>
+                          </div>
+
+
+                        </fieldset>
+                      </div>
+                  </uib-tab>
+                  <uib-tab heading="Contact" ng-show="!pageController.isNew">
+
+                    <div ng-show="!pageController.isLoading" class="card-body card-padding">
+                      <div class="form-group">
+                          <label for="emailAddress" class="field-label">Email Address</label>
+                          <div class="field-input">
+                              <input type="text" class="form-control form-control-static" id="emailAddress" name="emailAddress" ng-model="pageController.profile.emailAddress" disabled="disabled">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label for="name" class="field-label">Work Phone</label>
+                          <div class="field-input">
+                              <input type="text" class="form-control" id="workPhone" name="addr_line1" placeholder="Work Phone">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label for="name" class="field-label">Mobile Phone</label>
+                          <div class="field-input">
+                              <input type="text" class="form-control" id="mobilePhone" name="addr_line2" placeholder="Mobile Phone">
+                          </div>
+                      </div>
+                    </div>
+
+                  </uib-tab>
+                  <uib-tab heading="Password">
+                      <div ng-show="!pageController.isLoading" class="card-body card-padding">
+
+                        <div class="form-group">
+                            <label for="currentPassword" class="field-label">Current Password</label>
+                            <div class="field-input">
+                                <input type="password" class="form-control" id="currentPassword" name="currentPassword" ng-model="pageController.resetPassword.currentPassword" placeholder="Current Password">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="newPassword" class="field-label">New Password</label>
+                            <div class="field-input">
+                                <input type="password" class="form-control" id="newPassword" name="newPassword" ng-model="pageController.resetPassword.newPassword" placeholder="New Password">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmPassword" class="field-label">Confirm Password</label>
+                            <div class="field-input">
+                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" ng-model="pageController.resetPassword.confirmPassword" placeholder="Confirm Password">
+                            </div>
+                        </div>
+
+
+                      </div>
+                  </uib-tab>
+                  <uib-tab heading="Location" ng-show="!pageController.isNew">
+
+                    <div ng-show="!pageController.isLoading" class="card-body card-padding">
+                      <div class="form-group">
+                          <label for="name" class="field-label">Address (Line 1)</label>
+                          <div class="field-input">
+                              <input type="text" class="form-control" id="addr_line1" name="addr_line1" placeholder="Address (Line 1)">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label for="name" class="field-label">Address (Line 2)</label>
+                          <div class="field-input">
+                              <input type="text" class="form-control" id="addr_line2" name="addr_line2" placeholder="Address (Line 2)">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label for="name" class="field-label">City</label>
+                          <div class="field-input">
+                              <input type="text" class="form-control" id="addr_city" name="addr_city" placeholder="City">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label for="name" class="field-label">State</label>
+                          <div class="field-input">
+                              <input type="text" class="form-control" id="addr_state" name="addr_state" placeholder="State">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label for="name" class="field-label">Zip Code</label>
+                          <div class="field-input">
+                              <input type="text" class="form-control" id="addr_zip" name="addr_zip" placeholder="Zip Code">
+                          </div>
+                      </div>
+                    </div>
+
+                  </uib-tab>
+                  <uib-tab heading="Preferences">
+                      <p class="c-black f-500 m-b-20">Notifications</p>
+                      <div class="checkbox m-b-15">
+                          <label>
+                              <input type="checkbox" ng-model="pageController.prefs.allowEmailNotifications">
+                              <i class="input-helper"></i>
+                              I want to receive email notifications.
+                          </label>
+                      </div>
+                      <div class="checkbox m-b-15">
+                          <label>
+                              <input type="checkbox" disabled ng-model="pageController.prefs.allowInAppNotifications">
+                              <i class="input-helper"></i>
+                              I want to receive in app notifications.
+                          </label>
+                      </div>
+
+                      <p class="c-black f-500 m-b-20">Privacy</p>
+                      <div class="checkbox m-b-15">
+                          <label>
+                              <input type="checkbox" ng-model="pageController.prefs.allowEmailExposed">
+                              <i class="input-helper"></i>
+                              I do -not- want people to see my email address.
+                          </label>
+                      </div>
+                      <div class="checkbox m-b-15">
+                          <label>
+                              <input type="checkbox" ng-model="pageController.prefs.allowContactExposed">
+                              <i class="input-helper"></i>
+                              I do -not- want people to see my contact information.
+                          </label>
+                      </div>
+                      <div class="checkbox m-b-15">
+                          <label>
+                              <input type="checkbox" ng-model="pageController.prefs.allowLocationExposed">
+                              <i class="input-helper"></i>
+                              I do -not- want people to see my location information.
+                          </label>
+                      </div>
+
+                      <p class="c-black f-500 m-b-20">Display</p>
+                      <div class="checkbox m-b-15">
+                          <label>
+                              <input type="checkbox" ng-model="pageController.prefs.showInactiveRecords">
+                              <i class="input-helper"></i>
+                              Show inactive records. <i>(This toggles the display of disabled records on list screens.)</i>
+                          </label>
+                      </div>
+
+                  </uib-tab>
+                  <uib-tab heading="Invites">
+
+                      <ul class="pv-follow section-title list">
+                          <li><i class="fa fa-envelope" aria-hidden="true"></i> Pending Invites</li>
+                      </ul>
+                      <div class="noRecordsSection" ng-show="pageController.pendingInvites.length == 0">
+                          <i class="fa fa-exclamation-triangle"></i> No Records Found.
+                      </div>
+                      <div class="list-group tabbed-content-no-margin" ng-show="pageController.pendingInvites.length > 0">
+                          <a ng-click="pageController.viewInvite(item)" class="list-group-item invite" ng-repeat="item in pageController.pendingInvites" style="cursor: pointer;">
+                              <span class="badge bgm-gray pull-right list-card-tag">{{item.companyMemberType.name}}</span>
+                              <h4 class="list-group-item-heading"><i class="fa fa-angle-right"></i> {{item.company.name}}</h4>
+                              <p class="list-group-item-text">Status: {{item.status.name}}</p>
+                              <p class="list-group-item-text">Code: {{item.inviteCode}}</p>
+                          </a>
+                      </div>
+
+                      <ul class="pv-follow section-title list" style="margin-top: 20px;">
+                          <li><i class="fa fa-envelope-o" aria-hidden="true"></i> Past Invites</li>
+                      </ul>
+                      <div class="noRecordsSection" ng-show="pageController.pastInvites.length == 0">
+                          <i class="fa fa-exclamation-triangle"></i> No Records Found.
+                      </div>
+                      <div class="list-group tabbed-content-no-margin" ng-show="pageController.pastInvites.length > 0">
+                          <a class="list-group-item" ng-repeat="item in pageController.pastInvites">
+                              <span class="badge bgm-gray pull-right list-card-tag">{{item.companyMemberType.name}}</span>
+                              <h4 class="list-group-item-heading"><i class="fa fa-angle-right"></i> {{item.company.name}}</h4>
+                              <p class="list-group-item-text">Status: {{item.status.name}}</p>
+                          </a>
+                      </div>
+
+
+                  </uib-tab>
+                  <uib-tab heading="Companies">
+                      <div ng-show="!pageController.isLoading" class="card-body card-padding">
+                          <div class="noRecordsSection" ng-show="pageController.companies.length == 0">
+                              <i class="fa fa-exclamation-triangle"></i> No Records Found.
+                          </div>
+                      </div>
+                      <div class="list-group tabbed-content-no-margin" ng-show="pageController.companies.length > 0">
+                          <a href="#/companies/{{model._id}}" class="list-group-item company" ng-repeat="model in pageController.companies track by model._id | orderBy:'name'">
+                              <span class="badge bgm-bluegray pull-right list-card-tag">Owner</span>
+                              <h4 class="list-group-item-heading company"><i class="fa fa-angle-right"></i> {{model.name}}</h4>
+                              <p class="list-group-item-text">{{(model.description) || "No Description"}}</p>
+                          </a>
+                      </div>
+                  </uib-tab>
+              </uib-tabset>
+
+            </div>
+            <div class="lv-footer">
+                Footer
+            </div>
+        </form>
+    </div>
+</div>

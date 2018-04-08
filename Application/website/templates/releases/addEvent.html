@@ -1,0 +1,43 @@
+<!-- <div class="modal-header">
+    <h4 class="modal-title">Add a new Release</h4>
+</div>
+<div class="modal-body">
+    <form class="addEvent" role="form">
+
+        Coming Soon...
+
+        <div class="form-group">
+            <label for="eventName">Release Color</label>
+            <div class="event-tag" data-ng-class="{ 'active': pageController.activeState }">
+                <span data-ng-repeat="w in tags" data-tag="{{ w }}" class="{{ w }}" data-ng-class="{ 'selected': activeState === $index }" data-ng-click="pageController.onTagClick(w, $index)"></span>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-link" data-ng-click="pageController.addEvent()">Add Release</button>
+    <button type="button" class="btn btn-link" data-ng-click="pageController.eventDismiss()">Close</button>
+</div>
+
+ -->
+
+
+<div>
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="pageController.cancel()" aria-hidden="true">×</button>
+        <h3 class="modal-title">Add a new Release</h3>
+    </div>
+    <div class="modal-body">
+        <fieldset ng-show="!modalController.isLoading">
+
+          Coming Soon.
+
+        </fieldset>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-link waves-effect" ng-click="pageController.cancel()">Cancel</button>
+        <button class="btn btn-link waves-effect" ng-click="pageController.create()">Create</button>
+    </div>
+</div>

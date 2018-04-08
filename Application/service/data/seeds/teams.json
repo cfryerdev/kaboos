@@ -1,0 +1,47 @@
+[
+	{
+		"_id": "582e68e7f4a8d6148840ba47",
+		"description": "Development team dedicated to internal applications.",
+		"name": "Team Wolverine",
+		"company_id": "582e68e7f4a8d6148840ba3e"
+	},
+	{
+		"_id": "582e68e7f4a8d6148840ba4a",
+		"description": "Database and data team.",
+		"name": "Team Nightcrawler",
+		"company_id": "582e68e7f4a8d6148840ba3e"
+	},
+	{
+		"_id": "582e68e7f4a8d6148840ba48",
+		"description": "Offshore Development team.",
+		"name": "Team Cyclops",
+		"company_id": "582e68e7f4a8d6148840ba3e"
+	},
+	{
+		"_id": "582e68e7f4a8d6148840ba49",
+		"description": "Marketing and Customer Support",
+		"name": "Team Storm",
+		"company_id": "582e68e7f4a8d6148840ba3e"
+	},
+	{
+		"_id": "582e68e7f4a8d6148840ba4b",
+		"description": "Executive & Management staff ",
+		"name": "Team Cerebro",
+		"company_id": "582e68e7f4a8d6148840ba3e"
+	},
+	{
+		"_id": "582e6dffb37e551f00a6f6c0",
+		"description": "asdf",
+		"name": "asdf"
+	},
+	{
+		"_id": "582e6e67b37e551f00a6f6c3",
+		"description": "ASDF",
+		"name": "Test"
+	},
+	{
+		"_id": "582e6ea1b37e551f00a6f6c7",
+		"description": "Not a real team",
+		"name": "The team of success"
+	}
+]

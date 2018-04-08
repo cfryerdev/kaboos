@@ -1,0 +1,210 @@
+
+<div class="block-header no-breadcrum">
+  <h2>Wizard - New Release
+    <small>Lets create a new release together!</small>
+  </h2>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h2>Step 1 <small>Which company is releasing code?</small></h2>
+    </div>
+    <div class="card-body card-padding-full next-step-bottom">
+      <label for="name" class="field-label">Company</label>
+      <div class="field-input select">
+        <select class="form-control required" id="companies" ng-model="pageController.release.companyId" ng-change="pageController.selectCompany()">
+          <optgroup>
+            <option value="">-- Select --</option>
+            <option ng-repeat="item in pageController.companies" value="{{item._id}}">
+                {{item.name}}
+            </option>
+          </optgroup>
+        </select>
+      </div>
+    </div>
+</div>
+
+<div ng-show="pageController.step == 1" class="next-step-attached">
+  <button class="btn btn-login bgm-deeppurple btn-float waves-effect waves-circle" ng-click="pageController.setStep(2)"><i class="fa fa-arrow-right down"></i></button>
+</div>
+<div ng-show="pageController.step > 1" class="next-step-attached" style="height: 60px;">
+  <button type="button" class="btn btn-login bgm-gray btn-float"><i class="fa fa-thumbs-up" style="color: #fff;"></i></button>
+</div>
+
+<div class="card" ng-show="pageController.step > 1">
+    <div class="card-header">
+        <h2>Step 2 <small>Tell us about this new release.</small></h2>
+    </div>
+    <div class="card-body card-padding-full next-step-bottom">
+
+      <div class="form-group">
+          <label for="name" class="field-label">Name</label>
+          <div class="field-input">
+              <input type="text" class="form-control required" id="name" name="name" ng-model="pageController.release.name" required placeholder="Name">
+          </div>
+      </div>
+
+      <div class="form-group">
+          <label for="products" class="field-label">Description</label>
+          <div class="field-input">
+              <textarea class="form-control" rows="3" id="description" ng-model="pageController.release.description" placeholder="Description"></textarea>
+          </div>
+      </div>
+
+      <div class="form-group">
+          <label for="products" class="field-label">Release Date</label>
+          <div class="field-input">
+            <div class="date-picker input-group dp-blue" ng-class="{ 'is-opened': opened2 == true }">
+                <div class="fg-line" ng-class="{ 'fg-toggled': opened2 == true }">
+                    <input type="text" class="form-control"
+                        ng-click="dpc.open($event, 'opened2')"
+                        datepicker-options="dateOptions"
+                        uib-datepicker-popup="shortDate"
+                        show-weeks="false"
+                        ng-model="dtPopup2"
+                        is-open="opened2"
+                        min-date="minDate"
+                        ng-required="true"
+                        close-text="Close"
+                        placeholder="Release Date" />
+                </div>
+            </div>
+          </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+              <label for="products" class="field-label">Start Time</label>
+              <div class="field-input">
+                  <timepicker ng-model="startTime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="true"></timepicker>
+              </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+              <label for="products" class="field-label">End Time</label>
+              <div class="field-input">
+                  <timepicker ng-model="endTime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="true"></timepicker>
+              </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+</div>
+
+<div ng-show="pageController.step == 2" class="next-step-attached">
+  <button class="btn btn-login bgm-deeppurple btn-float waves-effect waves-circle" ng-click="pageController.setStep(3)"><i class="fa fa-arrow-right down"></i></button>
+</div>
+<div ng-show="pageController.step > 2" class="next-step-attached" style="height: 60px;">
+  <button type="button" class="btn btn-login bgm-gray btn-float"><i class="fa fa-thumbs-up" style="color: #fff;"></i></button>
+</div>
+
+<div class="card" ng-show="pageController.step > 2">
+    <div class="card-header">
+        <h2>Step 3<small>Which projects are we releasing?</small></h2>
+    </div>
+    <div class="card-body card-padding-full next-step-bottom">
+      <p class="c-black f-500 m-b-20">Projects</p>
+      <div class="checkbox m-b-15" ng-repeat="item in pageController.projects" ng-if="pageController.projects.length > 0">
+          <label>
+              <input type="checkbox" ng-model="bool" ng-checked="pageController.isCheckedProject(item._id, bool)" /> <i class="input-helper"></i> {{item.name}}
+          </label>
+          <small class="checkbox-desc">{{(item.description) || "No Description"}}</small>
+      </div>
+      <div ng-if="pageController.projects.length == 0">No projects were found.</div>
+    </div>
+</div>
+
+<div ng-show="pageController.step == 3" class="next-step-attached">
+  <button class="btn btn-login bgm-deeppurple btn-float waves-effect waves-circle" ng-click="pageController.setStep(4)"><i class="fa fa-arrow-right down"></i></button>
+</div>
+<div ng-show="pageController.step > 3" class="next-step-attached" style="height: 60px;">
+  <button type="button" class="btn btn-login bgm-gray btn-float"><i class="fa fa-thumbs-up" style="color: #fff;"></i></button>
+</div>
+
+<div class="card"  ng-show="pageController.step > 3">
+    <div class="card-header">
+        <h2>Step 4 <small>Which teams are involved in the release?</small></h2>
+    </div>
+    <div class="card-body card-padding-full next-step-bottom">
+      <p class="c-black f-500 m-b-20">Teams</p>
+      <div class="checkbox m-b-15" ng-repeat="item in pageController.teams" ng-if="pageController.teams.length > 0">
+          <label>
+              <input type="checkbox" ng-model="bool" ng-checked="pageController.isChecked(item._id, bool)" /> <i class="input-helper"></i> {{item.name}}
+          </label>
+          <small class="checkbox-desc">{{(item.description) || "No Description"}}</small>
+      </div>
+      <div ng-if="pageController.teams.length == 0">No teams were found.</div>
+    </div>
+</div>
+
+<div ng-show="pageController.step == 4" class="next-step-attached">
+  <button class="btn btn-login bgm-deeppurple btn-float waves-effect waves-circle" ng-click="pageController.setStep(5)"><i class="fa fa-arrow-right down"></i></button>
+</div>
+<div ng-show="pageController.step > 4" class="next-step-attached" style="height: 60px;">
+  <button type="button" class="btn btn-login bgm-gray btn-float"><i class="fa fa-thumbs-up" style="color: #fff;"></i></button>
+</div>
+
+<div class="card"  ng-show="pageController.step > 4">
+  <div class="card-header">
+      <h2>Step 5 <small>Who else is involved in this release?</small></h2>
+  </div>
+  <div class="card-body card-padding-full next-step-bottom">
+    <p class="c-black f-500 m-b-20">Members</p>
+    <div class="checkbox m-b-15" ng-repeat="item in pageController.members" ng-if="pageController.members.length > 0">
+        <label>
+            <input type="checkbox" ng-model="bool" ng-checked="pageController.isCheckedMember(item._id, bool)" /> <i class="input-helper"></i> {{item.userProfile.displayName}}
+        </label>
+        <small class="checkbox-desc">{{(item.companyMemberType.name) || "No Role"}}</small>
+        <small class="checkbox-desc">{{(item.userProfile.emailAddress) || "No Contact Info"}}</small>
+    </div>
+    <div ng-if="pageController.members.length == 0">No members were found.</div>
+  </div>
+</div>
+
+<div ng-show="pageController.step == 5" class="next-step-attached">
+  <button class="btn btn-login bgm-deeppurple btn-float waves-effect waves-circle" ng-click="pageController.setStep(6)"><i class="fa fa-arrow-right down"></i></button>
+</div>
+<div ng-show="pageController.step > 5" class="next-step-attached" style="height: 60px;">
+  <button type="button" class="btn btn-login bgm-gray btn-float"><i class="fa fa-thumbs-up" style="color: #fff;"></i></button>
+</div>
+
+<div class="card" ng-show="pageController.step > 5">
+    <div class="card-header">
+        <h2>Step 6 <small>Lets talk about how people hear about this.</small></h2>
+    </div>
+    <div class="card-body card-padding-full next-step-bottom">
+      <p class="c-black f-500 m-b-20">Notifications</p>
+      <div class="checkbox m-b-15">
+          <label>
+              <input type="checkbox" ng-model="pageController.release.alertNone">
+              <i class="input-helper"></i>
+              I do -not- want people to be alerted.
+          </label>
+      </div>
+      <div class="checkbox m-b-15" ng-hide="pageController.release.alertNone">
+          <label>
+              <input type="checkbox" ng-model="pageController.release.alertInApp">
+              <i class="input-helper"></i>
+              I want people to get in-app alerts.
+          </label>
+      </div>
+      <div class="checkbox m-b-15" ng-hide="pageController.release.alertNone">
+          <label>
+              <input type="checkbox" ng-model="pageController.release.alertEmail">
+              <i class="input-helper"></i>
+              I want people to get email alerts.
+          </label>
+      </div>
+    </div>
+</div>
+
+<div ng-show="pageController.step == 6" class="next-step-attached">
+  <button class="btn btn-login btn-success btn-float waves-effect waves-circle" ng-click="pageController.save()"><i class="fa fa-save"></i></button>
+</div>
+
+<br />
+<br />

@@ -1,0 +1,41 @@
+<div>
+    <ul class="breadcrumb">
+        <li><a href="#/dashboard">Dashboard</a></li>
+        <li class="active">My Favorites</li>
+    </ul>
+    <div class="card">
+        <div class="card-header bgm-pink">
+            <h2>
+              <i class="fa fa-heart"></i> My Favorites
+              <small>These are items you frequently view.</small>
+            </h2>
+        </div>
+        <div class="card-body">
+          <!-- COMPANY -->
+          <a ng-if="model.company" href="#/companies/{{model.company._id}}" class="list-group-item company" ng-repeat="model in pageController.favorites">
+              <h4 class="list-group-item-heading company"><i class="fa fa-angle-right"></i> {{model.company.name}}  <span class="badge bgm-bluegray pull-right">Company</span></h4>
+              <p class="list-group-item-text">{{(model.company.description) || "No Description"}}</p>
+          </a>
+          <!-- PROJECT -->
+          <a ng-if="model.project" href="#/companies/{{model.project.company}}/projects/{{model.project._id}}" class="list-group-item project"
+              ng-repeat="model in pageController.favorites">
+              <h4 class="list-group-item-heading"><i class="fa fa-angle-right"></i> {{model.project.name}} <span class="badge bgm-orange pull-right">Project</span></h4>
+              <p class="list-group-item-text">{{(model.project.description) || "No Description"}}</p>
+          </a>
+          <!-- TEAM -->
+          <a ng-if="model.team" href="#/companies/{{model.team.company}}/teams/{{model.team._id}}" class="list-group-item team"
+              ng-repeat="model in pageController.favorites">
+              <h4 class="list-group-item-heading"><i class="fa fa-angle-right"></i> {{model.team.name}} <span class="badge bgm-deeppurple pull-right">Team</span></h4>
+              <p class="list-group-item-text">{{(model.team.description) || "No Description"}}</p>
+          </a>
+
+          <div ng-show="!pageController.isLoading && pageController.favorites.length == 0" class="noRecordsSection padlist">
+              <i class="fa fa-exclamation-triangle"></i> No Records Found.
+          </div>
+          <div ng-show="pageController.isLoading" class="loadingSection">
+              <i class="fa fa-circle-o-notch fa-spin fa-lg"></i> Loading... please wait.
+          </div>
+        </div>
+    </div>
+
+</div>

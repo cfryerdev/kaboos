@@ -1,0 +1,54 @@
+﻿<div>
+    <ul class="breadcrumb">
+        <li><a href="#/dashboard">Dashboard</a></li>
+        <li><a href="#/companies">Companies</a></li>
+        <li><a href="#/companies/{{pageController.companyId}}">Company</a></li>
+        <li class="active">Company Teams</li>
+    </ul>
+    <div class="card">
+        <div class="card-header bgm-purple">
+            <h2><i class="fa fa-puzzle-piece"></i> Company Teams <small>These are the teams that belong to the selected company.</small></h2>
+            <ul class="actions actions-alt">
+                <li class="dropdown" uib-dropdown="">
+                    <a href="#" uib-dropdown-toggle="" aria-expanded="false" class="dropdown-toggle" aria-haspopup="true">
+                        <i class="fa fa-ellipsis-v"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="">Refresh Data</a></li>
+                        <li><a href="">Filter Data</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <a class="btn bgm-red btn-float waves-effect" href="#/companies/{{pageController.companyId}}/teams/new"><i class="fa fa-plus"></i></a>
+        </div>
+        <div class="card-body card-padding" style="padding: 8px;">
+            <small class="card-padding">Showing teams for the {{pageController.company.name}} company.</small>
+        </div>
+        <div class="card-body">
+            <a href="#/companies/{{pageController.companyId}}/teams/{{model._id}}"
+                class="list-group-item team"
+                ng-repeat="model in pageController.teams track by model._id | orderBy:'name'">
+                <h4 class="list-group-item-heading"><i class="fa fa-angle-right"></i> {{model.name}}</h4>
+                <p class="list-group-item-text">{{(model.description) || "No Description"}}</p>
+            </a>
+            <div ng-show="!pageController.isLoading && pageController.companies.length == 0" class="noRecordsSection">
+                <i class="fa fa-exclamation-triangle"></i> No Records Found.
+            </div>
+            <div ng-show="pageController.isLoading" class="loadingSection">
+                <i class="fa fa-circle-o-notch fa-spin fa-lg"></i> Loading... please wait.
+            </div>
+        </div>
+        <div class="lv-footer pagination">
+            <ul class="pagination pagination-sm">
+                <li class="disabled"><a href="#">&laquo;</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&raquo;</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>

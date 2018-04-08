@@ -1,0 +1,41 @@
+﻿<div ng-init="modalController.init()">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="modalController.cancel()" aria-hidden="true">×</button>
+        <h3 class="modal-title">Invite to Company</h3>
+    </div>
+    <div class="modal-body">
+        <fieldset ng-show="!modalController.isLoading">
+
+          <div class="form-group">
+              <label for="name" class="field-label">Company</label>
+              <div class="field-input">
+                  <input type="text" class="form-control disabled" id="name" name="name" ng-model="modalController.model.companyName" disabled>
+              </div>
+          </div>
+
+          <div class="form-group">
+              <label for="type" class="field-label">Member Type</label>
+              <div class="field-input select">
+                <select class="form-control" id="type" ng-model="modalController.model.companyMemberType">
+                  <option value="">-- Select --</option>
+                  <option ng-repeat="item in modalController.memberTypes" value="{{item._id}}">
+                      {{item.name}}
+                  </option>
+                </select>
+              </div>
+          </div>
+
+          <div class="form-group">
+              <label for="emailAddress" class="field-label">Email Address</label>
+              <div class="field-input">
+                  <input type="text" class="form-control" id="emailAddress" name="emailAddress" ng-model="modalController.model.emailAddress">
+              </div>
+          </div>
+
+        </fieldset>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-link waves-effect" ng-click="modalController.cancel()">Cancel</button>
+        <button class="btn btn-link waves-effect" ng-click="modalController.invite()">Invite</button>
+    </div>
+</div>

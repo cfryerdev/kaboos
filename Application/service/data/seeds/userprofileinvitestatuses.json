@@ -1,0 +1,17 @@
+[
+	{
+		"_id": "582e68e7f4a8d6148840ba37",
+		"description": "Pending Invite Status",
+		"name": "Pending"
+	},
+	{
+		"_id": "582e68e7f4a8d6148840ba38",
+		"description": "Accepted Invite Status",
+		"name": "Accepted"
+	},
+	{
+		"_id": "582e68e7f4a8d6148840ba39",
+		"description": "Declined Invite Status",
+		"name": "Declined"
+	}
+]

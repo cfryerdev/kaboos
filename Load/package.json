@@ -1,0 +1,10 @@
+{
+  "author": "ePixelation",
+  "name": "KaboosLoadTests",
+  "description": "Kaboos Load Testing Service",
+  "license": "MIT",
+  "dependencies": {
+    "artillery": "1.5.0-15"
+  },
+  "version": "1.0.0"
+}

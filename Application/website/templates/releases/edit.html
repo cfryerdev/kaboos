@@ -1,0 +1,141 @@
+<div>
+    <ul class="breadcrumb">
+        <li><a href="#/dashboard">Dashboard</a></li>
+        <li><a href="#/dashboard">Releases</a></li>
+        <li class="active">Edit Release</li>
+    </ul>
+    <div class="card">
+        <div class="card-header bgm-cyan">
+            <h2>
+              <i class="fa fa-calendar"></i> Edit Release
+              <small>Here is some information about this release.</small>
+            </h2>
+            <button class="btn bgm-red btn-float waves-effect" type="button" style="margin-right: 70px;" ng-click="pageController.deleteRelease()"><i class="fa fa-trash"></i></button>
+            <button class="btn bgm-green btn-float waves-effect" type="submit" ><i class="fa fa-floppy-o"></i></button>
+        </div>
+        <div class="card-body">
+
+          <uib-tabset active="active" ng-show="!pageController.isLoading" class="nav-justified" >
+          	<uib-tab heading="Information">
+
+              <div class="form-group">
+                  <label for="name" class="field-label">Name</label>
+                  <div class="field-input">
+                      <input type="text" class="form-control required" id="name" name="name" ng-model="pageController.release.name" required placeholder="Name">
+                  </div>
+              </div>
+
+              <div class="form-group">
+                  <label for="name" class="field-label">Release Stage</label>
+                  <div class="field-input select">
+                    <select class="form-control required" id="projectType" ng-model="pageController.release.releaseStage._id">
+                      <option value="">-- Select --</option>
+                      <option ng-repeat="item in pageController.stages" value="{{item._id}}">
+                          {{item.name}}
+                      </option>
+                    </select>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                  <label for="name" class="field-label">Release Status</label>
+                  <div class="field-input select">
+                    <select class="form-control required" id="projectType" ng-model="pageController.release.releaseStatus._id">
+                      <option value="">-- Select --</option>
+                      <option ng-repeat="item in pageController.statuses" value="{{item._id}}">
+                          {{item.name}}
+                      </option>
+                    </select>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                  <label for="products" class="field-label">Notes</label>
+                  <div class="field-input">
+                      <textarea class="form-control" rows="10" id="description" ng-model="pageController.release.notes" placeholder="Description"></textarea>
+                  </div>
+              </div>
+
+          	</uib-tab>
+
+            <uib-tab heading="Scheduling" ng-show="!pageController.isNew">
+              <div class="form-group">
+                  <label for="products" class="field-label">Start Date</label>
+                  <div class="field-input">
+                    <div class="date-picker input-group dp-blue" ng-class="{ 'is-opened': opened2 == true }">
+                        <div class="fg-line" ng-class="{ 'fg-toggled': opened2 == true }">
+                            <input type="text" class="form-control"
+                                ng-click="dpc.open($event, 'opened2')"
+                                datepicker-options="dateOptions"
+                                uib-datepicker-popup="shortDate"
+                                show-weeks="false"
+                                ng-model="dtPopup2"
+                                is-open="opened2"
+                                min-date="minDate"
+                                ng-required="true"
+                                close-text="Close"
+                                placeholder="Release Date" />
+                        </div>
+                    </div>
+                  </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                      <label for="products" class="field-label">Start Time</label>
+                      <div class="field-input">
+                          <timepicker ng-model="startTime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="true"></timepicker>
+                      </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-6">
+                  <div class="form-group">
+                      <label for="products" class="field-label">End Time</label>
+                      <div class="field-input">
+                          <timepicker ng-model="endTime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="true"></timepicker>
+                      </div>
+                  </div>
+                </div>
+              </div>
+          	</uib-tab>
+
+          	<uib-tab heading="Options" ng-show="!pageController.isNew">
+          		<div class="noRecordsSection">
+          			<i class="fa fa-exclamation-triangle"></i> No Records Found.
+          		</div>
+          	</uib-tab>
+
+          	<uib-tab heading="Checklists" ng-show="!pageController.isNew">
+          		<div class="noRecordsSection">
+          			<i class="fa fa-exclamation-triangle"></i> No Records Found.
+          		</div>
+          	</uib-tab>
+
+          	<uib-tab heading="Projects" ng-show="!pageController.isNew">
+          		<div class="noRecordsSection">
+          			<i class="fa fa-exclamation-triangle"></i> No Records Found.
+          		</div>
+          	</uib-tab>
+
+          	<uib-tab heading="Teams" ng-show="!pageController.isNew">
+          		<div class="noRecordsSection">
+          			<i class="fa fa-exclamation-triangle"></i> No Records Found.
+          		</div>
+          	</uib-tab>
+
+          	<uib-tab heading="Members" ng-show="!pageController.isNew">
+          		<div class="noRecordsSection">
+          			<i class="fa fa-exclamation-triangle"></i> No Records Found.
+          		</div>
+          	</uib-tab>
+
+
+          </uib-tabset>
+
+
+        </div>
+    </div>
+
+</div>

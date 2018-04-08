@@ -1,0 +1,22 @@
+[
+	{
+		"_id": "58a0bfc6e482222068f8d569",
+		"description": "Release has been drafted.",
+		"name": "Draft"
+	},
+	{
+		"_id": "58a0bfcbb2bd97ed98b64874",
+		"description": "Release has been approved.",
+		"name": "Approved"
+	},
+	{
+		"_id": "58a0bfcfa38065d496510bd2",
+		"description": "Release has been started.",
+		"name": "Started"
+	},
+	{
+		"_id": "58a0bfd42b66428f17ce6096",
+		"description": "Release has been completed.",
+		"name": "Complete"
+	}
+]

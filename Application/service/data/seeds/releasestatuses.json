@@ -1,0 +1,37 @@
+[
+	{
+		"_id": "58a0c09a570bd284456e9296",
+		"description": "Release has is in a Pending status.",
+		"name": "Pending"
+	},
+	{
+		"_id": "58a0c07b9d125d3accd5b68d",
+		"description": "Release has is in a Pre-Deployment status.",
+		"name": "Pre-Deployment"
+	},
+	{
+		"_id": "58a0c083e99ed0928c3d81d8",
+		"description": "Release has is in a In Progress status.",
+		"name": "In Progress"
+	},
+	{
+		"_id": "58a0c08940560ee49df07867",
+		"description": "Release has is in a Post-Deployment status.",
+		"name": "Post-Deployment"
+	},
+	{
+		"_id": "58a0c08d388476d72c00d003",
+		"description": "Release has is in a Blocked status.",
+		"name": "Blocked"
+	},
+	{
+		"_id": "58a0c091a7596bedbeefde2f",
+		"description": "Release has is in a Failed status.",
+		"name": "Failed"
+	},
+	{
+		"_id": "58a0c0952752390c78586e6b",
+		"description": "Release has is in a Complete status.",
+		"name": "Complete"
+	}
+]

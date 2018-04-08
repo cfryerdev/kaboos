@@ -1,0 +1,30 @@
+<ul class="breadcrumb">
+    <li><a href="#/dashboard">Dashboard</a></li>
+    <li><a href="#/accounts/profile">Profile</a></li>
+    <li class="active">Invites</li>
+</ul>
+
+<div class="card">
+    <div class="card-header bgm-green">
+        <h2>New Invites <small>Here are any pending invites to companies!</small></h2>
+    </div>
+    <div class="card-body">
+      <ul class="pv-follow no-gap">
+          <li><i class="fa fa-envelope" aria-hidden="true"></i> Pending Invites</li>
+      </ul>
+      <div class="noRecordsSection" ng-show="pageController.pendingInvites.length == 0" style="padding: 20px;">
+          <i class="fa fa-exclamation-triangle"></i> No Records Found.
+      </div>
+      <div class="list-group" ng-show="pageController.pendingInvites.length > 0" style="margin-bottom: 0px;">
+          <a ng-click="pageController.viewInvite(item)" class="list-group-item invite" ng-repeat="item in pageController.pendingInvites" style="cursor: pointer;">
+              <span class="badge bgm-gray pull-right list-card-tag">{{item.companyMemberType.name}}</span>
+              <h4 class="list-group-item-heading"><i class="fa fa-angle-right"></i> {{item.company.name}}</h4>
+              <p class="list-group-item-text">Status: {{item.status.name}}</p>
+              <p class="list-group-item-text">Code: {{item.inviteCode}}</p>
+          </a>
+      </div>
+    </div>
+    <div class="lv-footer">
+        Footer
+    </div>
+</div>

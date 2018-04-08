@@ -1,0 +1,12 @@
+[
+	{
+		"_id": "58a0c42cbd2de0be877bbccd",
+		"notes": "Your release notes would go here. These can consist of outward facing customer notes, team specific notes, instructions, Etc",
+		"releaseStage_id": "58a0bfc6e482222068f8d569",
+		"releaseStatus_id": "58a0c09a570bd284456e9296",
+		"company_id": "582e68e7f4a8d6148840ba3e",
+		"name": "Kaboos beta release.",
+		"startDate": "2017-02-12T16:00:00Z",
+		"endDate": "2017-02-12T20:00:00Z"
+	}
+]

@@ -1,0 +1,17 @@
+[
+	{
+		"_id": "582e68e7f4a8d6148840ba36",
+		"description": "Person or Entity owning the company",
+		"name": "Owner"
+	},
+	{
+		"_id": "582e68e7f4a8d6148840ba3b",
+		"description": "Person who is a member of the company but does not need any editable roles.",
+		"name": "Subscriber"
+	},
+	{
+		"_id": "582e68e7f4a8d6148840ba3a",
+		"description": "Person who is a member of the company and needs rights to update/edit project or team data.",
+		"name": "Contributer"
+	}
+]

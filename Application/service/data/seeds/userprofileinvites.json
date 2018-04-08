@@ -1,0 +1,18 @@
+[
+	{
+		"_id": "582e68e7f4a8d6148840ba41",
+		"inviteCode": "ePix12345",
+		"status_id": "582e68e7f4a8d6148840ba38",
+		"companyMemberType_id": "582e68e7f4a8d6148840ba3a",
+		"company_id": "582e68e7f4a8d6148840ba3e",
+		"userProfile_id": "582e68e7f4a8d6148840ba3c"
+	},
+	{
+		"_id": "582e68e7f4a8d6148840ba42",
+		"inviteCode": "ePix0987654321",
+		"status_id": "582e68e7f4a8d6148840ba37",
+		"companyMemberType_id": "582e68e7f4a8d6148840ba3a",
+		"company_id": "582e68e7f4a8d6148840ba3f",
+		"userProfile_id": "582e68e7f4a8d6148840ba3c"
+	}
+]
